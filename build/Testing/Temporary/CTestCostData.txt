@@ -1,0 +1,6 @@
+CanFrameTest.IdProperty 1 0.00645376
+CanFrameTest.ExtendedProperty 1 0.00269197
+CanFrameTest.RemoteProperty 1 0.00577425
+CanFrameTest.DataLengthProperty 1 0.00259317
+CanFrameTest.DataProperty 1 0.00295248
+---

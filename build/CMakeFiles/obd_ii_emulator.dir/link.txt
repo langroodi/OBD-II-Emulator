@@ -1,0 +1,2 @@
+/usr/bin/ar qc libobd_ii_emulator.a CMakeFiles/obd_ii_emulator.dir/src/can_frame.cpp.o
+/usr/bin/ranlib libobd_ii_emulator.a
