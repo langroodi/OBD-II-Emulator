@@ -9,21 +9,29 @@ namespace ObdEmulator
     /// @brief CAN transmission packet frame
     class CanFrame
     {
+    public:
+        /// @brief Maximum CAN frame data length
+        static const size_t cDataLengthMax{8};
+
     private:
-        const uint32_t mId;
-        const bool mExtended;
-        const bool mRemote;
-        const size_t mDataLength;
-        const std::array<uint8_t, 8> mData;
+        static const uint32_t cStandardIdMax{0x7FF};
+        static const uint32_t cEXtendedIdMax{0xFFFFF};
+
+        uint32_t mId;
+        bool mExtended;
+        bool mRemote;
+        size_t mDataLength;
+        std::array<uint8_t, cDataLengthMax> mData;
 
     public:
-        static const size_t cMaxDataLength{8};
-
+        CanFrame() = delete;
+        
         /// @brief Constructor
         /// @param id CAN frame ID
         /// @param extended Indicates whether the frame is extended or standard
         /// @param remote Indicates whether the frame is remote transmission request (RTR) or data
         /// @param data CAN packet containing data
+        /// @throws std::out_of_range Throws if the ID is out of range
         CanFrame(
             uint32_t id,
             bool extended,
@@ -49,7 +57,7 @@ namespace ObdEmulator
 
         /// @brief Get frame data
         /// @returns Const reference to the data byte array
-        const std::array<uint8_t, cMaxDataLength> &GetData() const noexcept;
+        const std::array<uint8_t, cDataLengthMax> &GetData() const noexcept;
     };
 }
 
