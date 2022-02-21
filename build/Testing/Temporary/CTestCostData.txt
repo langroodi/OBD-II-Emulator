@@ -1,0 +1,11 @@
+CanFrameTest.IdProperty 1 0.00611649
+CanFrameTest.ExtendedProperty 1 0.00200593
+CanFrameTest.RemoteProperty 1 0.00174293
+CanFrameTest.DataLengthProperty 1 0.00159292
+CanFrameTest.DataProperty 1 0.00149502
+CanDriverTest.GetConfigurationMethod 1 0.00171353
+CanDriverTest.StandardSerializeMethod 1 0.00166973
+CanDriverTest.ExtendedSerializeMethod 1 0.00150882
+CanDriverTest.StandardDeserializeMethod 1 0.00149362
+CanDriverTest.ExtendedDeserializeMethod 1 0.00147272
+---
