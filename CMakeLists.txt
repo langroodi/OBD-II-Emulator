@@ -54,6 +54,7 @@ include_directories(${include_dir})
 add_library(
   obd_ii_emulator
   ${source_dir}/can_frame.cpp
+  ${source_dir}/can_driver.cpp
 )
 
 target_include_directories(obd_ii_emulator
@@ -66,6 +67,7 @@ if(build_tests)
   add_executable(
     obd_ii_emulator_test
     ${test_dir}/can_frame_test.cpp
+    ${test_dir}/can_driver_test.cpp
   )
 
   target_link_libraries(

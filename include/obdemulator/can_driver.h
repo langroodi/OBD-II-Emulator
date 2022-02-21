@@ -1,8 +1,6 @@
 #ifndef CAN_DRIVER_H
 #define CAN_DRIVER_H
 
-#include <vector>
-#include <stdexcept>
 #include "./can_frame.h"
 
 namespace ObdEmulator
@@ -27,11 +25,38 @@ namespace ObdEmulator
     /// @brief CAN bus controller driver helper
     class CanDriver
     {
+    public:
+        /// @brief Fixed CAN frame data packet size
+        static const size_t cFixedFrameSize{20};
+
     private:
-        static uint8_t getChecksum(std::initializer_list<uint8_t> data);
+        static const size_t cStandardIdSize{2};
+        static const size_t cExtendedIdSize{4};
+        static const uint8_t cHeaderByte{0xaa};
+        static const uint8_t cTrailerByte{0x55};
+        static const uint8_t cExtendedBitMask{0x20};
+        static const uint8_t cRemoteBitMask{0x10};
+
+        static std::array<uint8_t, cStandardIdSize> getStandardIdArray(
+            uint32_t id);
+        static std::array<uint8_t, cExtendedIdSize> getExtendedIdArray(
+            uint32_t id);
+
+        static uint32_t getStandardId(
+            uint8_t firstByte,
+            uint8_t lastByte);
+
+        static uint32_t getExtendedId(
+            uint8_t firstByte,
+            uint8_t secondtByte,
+            uint8_t thirdByte,
+            uint8_t lastByte);
+
+        static void setChecksum(
+            std::array<uint8_t, cFixedFrameSize> &data);
 
     public:
-        static const size_t cFixedFrameSize{20};
+        CanDriver() = delete;
 
         /// @brief Get CAN bus communication configuration packet
         /// @param speed CAN bus communication speed
@@ -43,22 +68,14 @@ namespace ObdEmulator
         /// @brief Serialize a CAN frame to a variable length byte array
         /// @param frame Frame to be serialized
         /// @returns Serialized frame byte array
-        /// @see SerializeConstLength(CanFrame)
-        static std::vector<uint8_t> SerializeVarLength(
-            const CanFrame frame);
+        static std::vector<uint8_t> Serialize(
+            const CanFrame &frame);
 
-        /// @brief Serialize a CAN frame to a constant length byte array
-        /// @param frame Frame to be serialized
-        /// @returns Serialized frame byte array
-        /// @see SerializeVarLength(CanFrame)
-        static std::array<uint8_t, cFixedFrameSize> SerializeConstLength(
-            const CanFrame frame);
-
-        /// @brief Deserialize a data array to a CAN frame
-        /// @param data Data array to be deserialized
+        /// @brief Deserialize a packet to a CAN frame
+        /// @param packet Packet data array to be deserialized
         /// @returns Derserialized CAN frame
         /// @throws std::invalid_argument Throws if the data array is invalid
-        static CanFrame Deserialize(std::initializer_list<uint8_t> data);
+        static CanFrame Deserialize(const std::vector<uint8_t> &packet);
     };
 }
 
