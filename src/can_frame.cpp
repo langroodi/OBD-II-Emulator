@@ -8,13 +8,13 @@ namespace ObdEmulator
         uint32_t id,
         bool extended,
         bool remote,
-        std::initializer_list<uint8_t> data)
+        const std::vector<uint8_t> &data)
     {
         if (extended && id > cEXtendedIdMax)
         {
             throw std::out_of_range("Extended ID is out of range.");
         }
-        else if (id > cStandardIdMax)
+        else if (!extended && id > cStandardIdMax)
         {
             throw std::out_of_range("Standard ID is out of range.");
         }
@@ -23,7 +23,7 @@ namespace ObdEmulator
         mExtended = extended;
         mRemote = remote;
         mDataLength = data.size();
-        std::copy(data.begin(), data.end(), mData.begin());
+        std::copy(data.cbegin(), data.cend(), mData.begin());
     }
 
     u_int32_t CanFrame::GetId() const noexcept

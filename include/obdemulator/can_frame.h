@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <array>
+#include <vector>
 
 namespace ObdEmulator
 {
@@ -14,8 +15,8 @@ namespace ObdEmulator
         static const size_t cDataLengthMax{8};
 
     private:
-        static const uint32_t cStandardIdMax{0x7FF};
-        static const uint32_t cEXtendedIdMax{0xFFFFF};
+        static const uint32_t cStandardIdMax{0x7ff};
+        static const uint32_t cEXtendedIdMax{0x1fffffff};
 
         uint32_t mId;
         bool mExtended;
@@ -25,7 +26,7 @@ namespace ObdEmulator
 
     public:
         CanFrame() = delete;
-        
+
         /// @brief Constructor
         /// @param id CAN frame ID
         /// @param extended Indicates whether the frame is extended or standard
@@ -36,7 +37,7 @@ namespace ObdEmulator
             uint32_t id,
             bool extended,
             bool remote,
-            std::initializer_list<uint8_t> data);
+            const std::vector<uint8_t> &data);
 
         /// @brief Get frame CAN ID
         /// @returns 11-bit ID if the frame is standard and 20-bit ID if it is extended
