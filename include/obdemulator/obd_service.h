@@ -15,9 +15,11 @@ namespace ObdEmulator
     protected:
         /// @brief Constructor
         /// @param service OBD-II service (mode)
-        ObdService(uint8_t service);
+        ObdService(uint8_t service) noexcept;
 
     public:
+        ~ObdService() noexcept = default;
+        
         /// @brief Get the service
         /// @returns OBD service number
         uint8_t GetService() const noexcept;
@@ -25,6 +27,7 @@ namespace ObdEmulator
         /// @brief Get the emulated response based the requested PID
         /// @param pid Standard parameter ID
         /// @returns Response byte array
+        /// @note The function may be called from a different thread than the main thread.
         virtual std::vector<uint8_t> GetResponse(
             const std::vector<uint8_t> &pid) = 0;
     };
