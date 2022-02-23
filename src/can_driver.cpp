@@ -230,6 +230,14 @@ namespace ObdEmulator
         auto _end{_begin + _dlc};
         std::vector<uint8_t> _data(_begin, _end);
 
+        // Trailer segment
+        _pointer += _dlc;
+        uint8_t _trailerByte = packet.at(_pointer);
+        if (_trailerByte != cTrailerByte)
+        {
+            throw std::invalid_argument("Data trailer is corrupted.");
+        }
+
         CanFrame _result(_id, _extended, _remote, _data);
 
         return _result;
