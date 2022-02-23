@@ -30,7 +30,8 @@ namespace ObdEmulator
         /// @param callback Callback to be invoked when a data is received
         void SetCallback(CallbackType &&callback);
 
-        /// @brief Reset the data received callback if it has been already set via SetCallback(CallbackType)
+        /// @brief Reset the data received callback if it has been already set
+        /// @see SetCallback(CallbackType)
         void ResetCallback() noexcept;
 
         /// @brief Stop the communication
