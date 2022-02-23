@@ -29,6 +29,7 @@ namespace ObdEmulator
 
     TEST(CanDriverTest, StandardSerializeMethod)
     {
+        const size_t cPacketSize{13};
         const uint32_t cId{0x0123};
         const bool cExtended{false};
         const bool cRtr{false};
@@ -37,7 +38,7 @@ namespace ObdEmulator
 
         const CanFrame cFrame(cId, cExtended, cRtr, cData);
 
-        const std::array<uint8_t, CanDriver::cFixedFrameSize> cExpectedResult{
+        const std::array<uint8_t, cPacketSize> cExpectedResult{
             0xaa, 0xc8,
             0x23, 0x01,
             0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
@@ -54,6 +55,7 @@ namespace ObdEmulator
 
     TEST(CanDriverTest, ExtendedSerializeMethod)
     {
+        const size_t cPacketSize{15};
         const uint32_t cId{0x01234567};
         const bool cExtended{true};
         const bool cRtr{false};
@@ -62,7 +64,7 @@ namespace ObdEmulator
 
         const CanFrame cFrame(cId, cExtended, cRtr, cData);
 
-        const std::array<uint8_t, CanDriver::cFixedFrameSize> cExpectedResult{
+        const std::array<uint8_t, cPacketSize> cExpectedResult{
             0xaa, 0xe8,
             0x67, 0x45, 0x23, 0x01,
             0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
