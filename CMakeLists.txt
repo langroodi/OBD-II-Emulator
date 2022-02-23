@@ -56,6 +56,7 @@ add_library(
   ${source_dir}/can_frame.cpp
   ${source_dir}/can_driver.cpp
   ${source_dir}/obd_service.cpp
+  ${source_dir}/communication_layer.cpp
 )
 
 target_include_directories(obd_ii_emulator
@@ -70,6 +71,7 @@ if(build_tests)
     ${test_dir}/can_frame_test.cpp
     ${test_dir}/can_driver_test.cpp
     ${test_dir}/obd_service_test.cpp
+    ${test_dir}/communication_layer_test.cpp
   )
 
   target_link_libraries(
