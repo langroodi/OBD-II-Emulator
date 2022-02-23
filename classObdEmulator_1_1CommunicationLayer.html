@@ -93,9 +93,8 @@ $(document).ready(function(){initNavTree('classObdEmulator_1_1CommunicationLayer
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-types">Protected Types</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classObdEmulator_1_1CommunicationLayer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">ObdEmulator::CommunicationLayer Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
@@ -116,110 +115,79 @@ Inheritance diagram for ObdEmulator::CommunicationLayer:</div>
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ada1c3855abb2bbf3aa9e9c6401e9883d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ada1c3855abb2bbf3aa9e9c6401e9883d">CallbackType</a> = std::function&lt; bool(std::vector&lt; uint8_t &gt; &amp;&amp;, std::vector&lt; uint8_t &gt; &amp;)&gt;</td></tr>
+<tr class="memdesc:ada1c3855abb2bbf3aa9e9c6401e9883d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data received callback type.  <a href="classObdEmulator_1_1CommunicationLayer.html#ada1c3855abb2bbf3aa9e9c6401e9883d">More...</a><br /></td></tr>
+<tr class="separator:ada1c3855abb2bbf3aa9e9c6401e9883d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab6672b8da52b1503c8afb07935da6ec0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ab6672b8da52b1503c8afb07935da6ec0">Start</a> ()=0</td></tr>
 <tr class="memdesc:ab6672b8da52b1503c8afb07935da6ec0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the communication.  <a href="classObdEmulator_1_1CommunicationLayer.html#ab6672b8da52b1503c8afb07935da6ec0">More...</a><br /></td></tr>
 <tr class="separator:ab6672b8da52b1503c8afb07935da6ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a285c19e0b027522ef7cb5cec4e178ecc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#a285c19e0b027522ef7cb5cec4e178ecc">Send</a> (const std::vector&lt; uint8_t &gt; &amp;data)=0</td></tr>
-<tr class="memdesc:a285c19e0b027522ef7cb5cec4e178ecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data via the communication layer.  <a href="classObdEmulator_1_1CommunicationLayer.html#a285c19e0b027522ef7cb5cec4e178ecc">More...</a><br /></td></tr>
-<tr class="separator:a285c19e0b027522ef7cb5cec4e178ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac203f0028dc798a777d3d4846b152ce5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ac203f0028dc798a777d3d4846b152ce5">SetCallback</a> (<a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ada1c3855abb2bbf3aa9e9c6401e9883d">CallbackType</a> &amp;&amp;callback)</td></tr>
+<tr class="memdesc:ac203f0028dc798a777d3d4846b152ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a data received callaback.  <a href="classObdEmulator_1_1CommunicationLayer.html#ac203f0028dc798a777d3d4846b152ce5">More...</a><br /></td></tr>
+<tr class="separator:ac203f0028dc798a777d3d4846b152ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaff4bf35238bf0168e454cd09729b7e"><td class="memItemLeft" align="right" valign="top"><a id="abaff4bf35238bf0168e454cd09729b7e" name="abaff4bf35238bf0168e454cd09729b7e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetCallback</b> () noexcept</td></tr>
+<tr class="memdesc:abaff4bf35238bf0168e454cd09729b7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the data received callback if it has been already set via SetCallback(CallbackType) <br /></td></tr>
+<tr class="separator:abaff4bf35238bf0168e454cd09729b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61f426a88f61ff1ae3817739a6ea3c25"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#a61f426a88f61ff1ae3817739a6ea3c25">Stop</a> ()=0</td></tr>
 <tr class="memdesc:a61f426a88f61ff1ae3817739a6ea3c25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the communication.  <a href="classObdEmulator_1_1CommunicationLayer.html#a61f426a88f61ff1ae3817739a6ea3c25">More...</a><br /></td></tr>
 <tr class="separator:a61f426a88f61ff1ae3817739a6ea3c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-types" name="pro-types"></a>
-Protected Types</h2></td></tr>
-<tr class="memitem:af4fc70a3c2bbc1deaa5045a5fa7519ef"><td class="memItemLeft" align="right" valign="top"><a id="af4fc70a3c2bbc1deaa5045a5fa7519ef" name="af4fc70a3c2bbc1deaa5045a5fa7519ef"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>CallbackType</b> = std::function&lt; void(std::vector&lt; uint8_t &gt; &amp;&amp;)&gt;</td></tr>
-<tr class="memdesc:af4fc70a3c2bbc1deaa5045a5fa7519ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data received callback type. <br /></td></tr>
-<tr class="separator:af4fc70a3c2bbc1deaa5045a5fa7519ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a6f3bc5231053a68407f0302be345b2e5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#a6f3bc5231053a68407f0302be345b2e5">CommunicationLayer</a> (<a class="el" href="classObdEmulator_1_1CommunicationLayer.html#af4fc70a3c2bbc1deaa5045a5fa7519ef">CallbackType</a> callback)</td></tr>
-<tr class="memdesc:a6f3bc5231053a68407f0302be345b2e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classObdEmulator_1_1CommunicationLayer.html#a6f3bc5231053a68407f0302be345b2e5">More...</a><br /></td></tr>
-<tr class="separator:a6f3bc5231053a68407f0302be345b2e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a58e092b6e42ddc4a3786f2b62696955b"><td class="memItemLeft" align="right" valign="top"><a id="a58e092b6e42ddc4a3786f2b62696955b" name="a58e092b6e42ddc4a3786f2b62696955b"></a>
-<a class="el" href="classObdEmulator_1_1CommunicationLayer.html#af4fc70a3c2bbc1deaa5045a5fa7519ef">CallbackType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Callback</b></td></tr>
+<a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ada1c3855abb2bbf3aa9e9c6401e9883d">CallbackType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Callback</b></td></tr>
 <tr class="memdesc:a58e092b6e42ddc4a3786f2b62696955b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to be invoked when data received. <br /></td></tr>
 <tr class="separator:a58e092b6e42ddc4a3786f2b62696955b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Communication medium abstraction layer to send and receive data. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a6f3bc5231053a68407f0302be345b2e5" name="a6f3bc5231053a68407f0302be345b2e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f3bc5231053a68407f0302be345b2e5">&#9670;&nbsp;</a></span>CommunicationLayer()</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="ada1c3855abb2bbf3aa9e9c6401e9883d" name="ada1c3855abb2bbf3aa9e9c6401e9883d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada1c3855abb2bbf3aa9e9c6401e9883d">&#9670;&nbsp;</a></span>CallbackType</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ObdEmulator::CommunicationLayer::CommunicationLayer </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#af4fc70a3c2bbc1deaa5045a5fa7519ef">CallbackType</a>&#160;</td>
-          <td class="paramname"><em>callback</em></td><td>)</td>
-          <td></td>
+          <td class="memname">using <a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ada1c3855abb2bbf3aa9e9c6401e9883d">ObdEmulator::CommunicationLayer::CallbackType</a> =  std::function&lt;bool(std::vector&lt;uint8_t&gt; &amp;&amp;, std::vector&lt;uint8_t&gt; &amp;)&gt;</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Constructor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">callback</td><td>Callback to be invoked when data received </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Data received callback type. </p>
+<p >The caller moves the received byte array to the callback and expects the handler to return a boolean that indiciates whether or not it fills the other byte array refenrece as the response. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a285c19e0b027522ef7cb5cec4e178ecc" name="a285c19e0b027522ef7cb5cec4e178ecc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a285c19e0b027522ef7cb5cec4e178ecc">&#9670;&nbsp;</a></span>Send()</h2>
+<a id="ac203f0028dc798a777d3d4846b152ce5" name="ac203f0028dc798a777d3d4846b152ce5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac203f0028dc798a777d3d4846b152ce5">&#9670;&nbsp;</a></span>SetCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void ObdEmulator::CommunicationLayer::Send </td>
+          <td class="memname">void ObdEmulator::CommunicationLayer::SetCallback </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; uint8_t &gt; &amp;&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ada1c3855abb2bbf3aa9e9c6401e9883d">CallbackType</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Send data via the communication layer. </p>
+<p>Set a data received callaback. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>Data to be sent as byte array <br  />
- </td></tr>
+    <tr><td class="paramname">callback</td><td>Callback to be invoked when a data is received </td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Implemented in <a class="el" href="classObdEmulator_1_1SerialCommunication.html#a0e80c67eb9087e097afd06782e54e36c">ObdEmulator::SerialCommunication</a>.</p>
 
 </div>
 </div>
