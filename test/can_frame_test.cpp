@@ -9,11 +9,12 @@ namespace ObdEmulator
         const uint32_t cId{1};
         const bool cExtended{true};
         const bool cRemote{false};
-        const std::initializer_list<uint8_t> cData{0, 1, 2, 3, 4, 5, 6, 7};
+        const std::array<uint8_t, 8> cDataArray;
 
         CanFrame Frame;
 
-        CanFrameTest() : Frame(cId, cExtended, cRemote, cData)
+        CanFrameTest() : Frame(cId, cExtended, cRemote, std::initializer_list<uint8_t>{0, 1, 2, 3, 4, 5, 6, 7}),
+                         cDataArray{0, 1, 2, 3, 4, 5, 6, 7}
         {
         }
     };
@@ -35,12 +36,12 @@ namespace ObdEmulator
 
     TEST_F(CanFrameTest, DataLengthProperty)
     {
-        EXPECT_EQ(Frame.GetDataLength(), cData.size());
+        EXPECT_EQ(Frame.GetDataLength(), cDataArray.size());
     }
 
     TEST_F(CanFrameTest, DataProperty)
     {
         auto _data = Frame.GetData();
-        EXPECT_TRUE(std::equal(_data.begin(), _data.end(), cData.begin()));
+        EXPECT_TRUE(std::equal(_data.begin(), _data.end(), cDataArray.begin()));
     }
 }
