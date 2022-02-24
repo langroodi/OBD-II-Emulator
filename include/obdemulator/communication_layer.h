@@ -20,7 +20,7 @@ namespace ObdEmulator
         CallbackType Callback;
 
     public:
-        CommunicationLayer() noexcept = default;
+        CommunicationLayer() noexcept;
         virtual ~CommunicationLayer() noexcept = default;
 
         /// @brief Start the communication
@@ -31,7 +31,7 @@ namespace ObdEmulator
         void SetCallback(CallbackType &&callback);
 
         /// @brief Reset the data received callback if it has been already set
-        /// @see SetCallback(CallbackType)
+        /// @see SetCallback
         void ResetCallback() noexcept;
 
         /// @brief Stop the communication

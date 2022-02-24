@@ -2,6 +2,10 @@
 
 namespace ObdEmulator
 {
+    CommunicationLayer::CommunicationLayer() noexcept : Callback{nullptr}
+    {
+    }
+    
     void CommunicationLayer::SetCallback(CallbackType &&callback)
     {
         Callback = std::move(callback);
