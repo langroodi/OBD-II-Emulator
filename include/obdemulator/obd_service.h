@@ -18,7 +18,7 @@ namespace ObdEmulator
         ObdService(uint8_t service) noexcept;
 
     public:
-        ~ObdService() noexcept = default;
+        virtual ~ObdService() noexcept = default;
         
         /// @brief Get the service
         /// @returns OBD service number
