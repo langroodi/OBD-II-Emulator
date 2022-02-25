@@ -27,6 +27,11 @@ namespace ObdEmulator
         return false;
     }
 
+    TEST_F(CommunicationLayerTest, Constructor)
+    {
+        EXPECT_FALSE(Callback);
+    }
+
     TEST_F(CommunicationLayerTest, SetCallbackMethod)
     {
         SetCallback(DummyCallback);
