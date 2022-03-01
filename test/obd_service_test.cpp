@@ -13,9 +13,10 @@ namespace ObdEmulator
         }
 
     public:
-        std::vector<uint8_t> GetResponse(const std::vector<uint8_t> &pid) override
+        bool TryGetResponse(
+            const std::vector<uint8_t> &query, std::vector<uint8_t>& response) override
         {
-            return std::vector<uint8_t>();
+            return false;
         }
     };
 

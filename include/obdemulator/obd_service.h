@@ -24,12 +24,13 @@ namespace ObdEmulator
         /// @returns OBD service number
         uint8_t GetService() const noexcept;
 
-        /// @brief Get the emulated response based the requested PID
-        /// @param pid Standard parameter ID
-        /// @returns Response byte array
+        /// @brief Try to get an emulated response based the queried PID
+        /// @param[in] pid Queried PID
+        /// @param[out] response Response data byte array
+        /// @returns True, if the service handled the query successfully, otherwise false
         /// @note The function may be called from a different thread than the main thread.
-        virtual std::vector<uint8_t> GetResponse(
-            const std::vector<uint8_t> &pid) = 0;
+        virtual bool TryGetResponse(
+            const std::vector<uint8_t> &pid, std::vector<uint8_t>& response) = 0;
     };
 }
 

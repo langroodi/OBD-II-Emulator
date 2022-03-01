@@ -9,7 +9,7 @@ namespace ObdEmulator
         const uint32_t cId{1};
         const bool cExtended{true};
         const bool cRemote{false};
-        const std::array<uint8_t, 8> cDataArray;
+        const std::array<uint8_t, CanFrame::cDataLengthMax> cDataArray;
 
         CanFrame Frame;
 
