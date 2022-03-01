@@ -110,9 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9769a7ef56a96b587ee51ca46a26b999"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#a9769a7ef56a96b587ee51ca46a26b999">GetService</a> () const noexcept</td></tr>
 <tr class="memdesc:a9769a7ef56a96b587ee51ca46a26b999"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the service.  <a href="classObdEmulator_1_1ObdService.html#a9769a7ef56a96b587ee51ca46a26b999">More...</a><br /></td></tr>
 <tr class="separator:a9769a7ef56a96b587ee51ca46a26b999"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57eb4ff1ff2e5c7b71dda0522d656288"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#a57eb4ff1ff2e5c7b71dda0522d656288">GetResponse</a> (const std::vector&lt; uint8_t &gt; &amp;pid)=0</td></tr>
-<tr class="memdesc:a57eb4ff1ff2e5c7b71dda0522d656288"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the emulated response based the requested PID.  <a href="classObdEmulator_1_1ObdService.html#a57eb4ff1ff2e5c7b71dda0522d656288">More...</a><br /></td></tr>
-<tr class="separator:a57eb4ff1ff2e5c7b71dda0522d656288"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae90edbba5ae12091e118d0d2095546b7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#ae90edbba5ae12091e118d0d2095546b7">TryGetResponse</a> (const std::vector&lt; uint8_t &gt; &amp;pid, std::vector&lt; uint8_t &gt; &amp;response)=0</td></tr>
+<tr class="memdesc:ae90edbba5ae12091e118d0d2095546b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to get an emulated response based the queried PID.  <a href="classObdEmulator_1_1ObdService.html#ae90edbba5ae12091e118d0d2095546b7">More...</a><br /></td></tr>
+<tr class="separator:ae90edbba5ae12091e118d0d2095546b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -158,42 +158,6 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a57eb4ff1ff2e5c7b71dda0522d656288" name="a57eb4ff1ff2e5c7b71dda0522d656288"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57eb4ff1ff2e5c7b71dda0522d656288">&#9670;&nbsp;</a></span>GetResponse()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual std::vector&lt; uint8_t &gt; ObdEmulator::ObdService::GetResponse </td>
-          <td>(</td>
-          <td class="paramtype">const std::vector&lt; uint8_t &gt; &amp;&#160;</td>
-          <td class="paramname"><em>pid</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the emulated response based the requested PID. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pid</td><td>Standard parameter ID </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Response byte array </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>The function may be called from a different thread than the main thread. </dd></dl>
-
-</div>
-</div>
 <a id="a9769a7ef56a96b587ee51ca46a26b999" name="a9769a7ef56a96b587ee51ca46a26b999"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9769a7ef56a96b587ee51ca46a26b999">&#9670;&nbsp;</a></span>GetService()</h2>
 
@@ -219,6 +183,53 @@ Protected Member Functions</h2></td></tr>
 
 <p>Get the service. </p>
 <dl class="section return"><dt>Returns</dt><dd>OBD service number </dd></dl>
+
+</div>
+</div>
+<a id="ae90edbba5ae12091e118d0d2095546b7" name="ae90edbba5ae12091e118d0d2095546b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae90edbba5ae12091e118d0d2095546b7">&#9670;&nbsp;</a></span>TryGetResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool ObdEmulator::ObdService::TryGetResponse </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>pid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; uint8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>response</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Try to get an emulated response based the queried PID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pid</td><td>Queried PID </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">response</td><td>Response data byte array </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True, if the service handled the query successfully, otherwise false </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The function may be called from a different thread than the main thread. </dd></dl>
 
 </div>
 </div>

@@ -116,15 +116,15 @@ $(document).ready(function(){initNavTree('obd__service_8h_source.html',''); init
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1ObdService.html#a9769a7ef56a96b587ee51ca46a26b999">   25</a></span>        uint8_t <a class="code hl_function" href="classObdEmulator_1_1ObdService.html#a9769a7ef56a96b587ee51ca46a26b999">GetService</a>() const noexcept;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1ObdService.html#a57eb4ff1ff2e5c7b71dda0522d656288">   31</a></span>        virtual std::vector&lt;uint8_t&gt; <a class="code hl_function" href="classObdEmulator_1_1ObdService.html#a57eb4ff1ff2e5c7b71dda0522d656288">GetResponse</a>(</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            const std::vector&lt;uint8_t&gt; &amp;pid) = 0;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    };</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1ObdService.html#ae90edbba5ae12091e118d0d2095546b7">   32</a></span>        virtual <span class="keywordtype">bool</span> <a class="code hl_function" href="classObdEmulator_1_1ObdService.html#ae90edbba5ae12091e118d0d2095546b7">TryGetResponse</a>(</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            const std::vector&lt;uint8_t&gt; &amp;pid, std::vector&lt;uint8_t&gt;&amp; response) = 0;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    };</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassObdEmulator_1_1ObdService_html"><div class="ttname"><a href="classObdEmulator_1_1ObdService.html">ObdEmulator::ObdService</a></div><div class="ttdoc">A class that defines an OBD-II service based on SAE J1979 standard.</div><div class="ttdef"><b>Definition:</b> obd_service.h:11</div></div>
-<div class="ttc" id="aclassObdEmulator_1_1ObdService_html_a57eb4ff1ff2e5c7b71dda0522d656288"><div class="ttname"><a href="classObdEmulator_1_1ObdService.html#a57eb4ff1ff2e5c7b71dda0522d656288">ObdEmulator::ObdService::GetResponse</a></div><div class="ttdeci">virtual std::vector&lt; uint8_t &gt; GetResponse(const std::vector&lt; uint8_t &gt; &amp;pid)=0</div><div class="ttdoc">Get the emulated response based the requested PID.</div></div>
 <div class="ttc" id="aclassObdEmulator_1_1ObdService_html_a9769a7ef56a96b587ee51ca46a26b999"><div class="ttname"><a href="classObdEmulator_1_1ObdService.html#a9769a7ef56a96b587ee51ca46a26b999">ObdEmulator::ObdService::GetService</a></div><div class="ttdeci">uint8_t GetService() const noexcept</div><div class="ttdoc">Get the service.</div></div>
+<div class="ttc" id="aclassObdEmulator_1_1ObdService_html_ae90edbba5ae12091e118d0d2095546b7"><div class="ttname"><a href="classObdEmulator_1_1ObdService.html#ae90edbba5ae12091e118d0d2095546b7">ObdEmulator::ObdService::TryGetResponse</a></div><div class="ttdeci">virtual bool TryGetResponse(const std::vector&lt; uint8_t &gt; &amp;pid, std::vector&lt; uint8_t &gt; &amp;response)=0</div><div class="ttdoc">Try to get an emulated response based the queried PID.</div></div>
 <div class="ttc" id="aclassObdEmulator_1_1ObdService_html_af232c0b2b654102b8d9ecbf1de126bf4"><div class="ttname"><a href="classObdEmulator_1_1ObdService.html#af232c0b2b654102b8d9ecbf1de126bf4">ObdEmulator::ObdService::ObdService</a></div><div class="ttdeci">ObdService(uint8_t service) noexcept</div><div class="ttdoc">Constructor.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
