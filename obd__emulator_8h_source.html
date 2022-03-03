@@ -107,21 +107,26 @@ $(document).ready(function(){initNavTree('obd__emulator_8h_source.html',''); ini
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1ObdEmulator.html">   11</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classObdEmulator_1_1ObdEmulator.html">ObdEmulator</a></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <a class="code hl_class" href="classObdEmulator_1_1CommunicationLayer.html">CommunicationLayer</a>* mCommunicationLayer;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        std::map&lt;uint8_t, ObdService*&gt; mObdServices;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <a class="code hl_class" href="classObdEmulator_1_1CommunicationLayer.html">CommunicationLayer</a> *mCommunicationLayer;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        std::map&lt;uint8_t, ObdService *&gt; mObdServices;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1ObdEmulator.html#a5b248ce7449d5cb23373029dbb73c48c">   21</a></span>        <a class="code hl_function" href="classObdEmulator_1_1ObdEmulator.html#a5b248ce7449d5cb23373029dbb73c48c">ObdEmulator</a>(</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <a class="code hl_class" href="classObdEmulator_1_1CommunicationLayer.html">CommunicationLayer</a>* communicationLayer,</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            std::initializer_list&lt;ObdService*&gt; obdServices);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1ObdEmulator.html#a4ce8aae1c6292c3b33dc5c95ce49c050">   26</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classObdEmulator_1_1ObdEmulator.html#a4ce8aae1c6292c3b33dc5c95ce49c050">Start</a>();</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1ObdEmulator.html#a57880dab3c882749143ed5f440dc5f54">   29</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classObdEmulator_1_1ObdEmulator.html#a57880dab3c882749143ed5f440dc5f54">Stop</a>();</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    };</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keywordtype">bool</span> processQuery(</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            std::vector&lt;uint8_t&gt; &amp;&amp;query,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            std::vector&lt;uint8_t&gt; &amp;response);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1ObdEmulator.html#a5b248ce7449d5cb23373029dbb73c48c">   25</a></span>        <a class="code hl_function" href="classObdEmulator_1_1ObdEmulator.html#a5b248ce7449d5cb23373029dbb73c48c">ObdEmulator</a>(</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <a class="code hl_class" href="classObdEmulator_1_1CommunicationLayer.html">CommunicationLayer</a> *communicationLayer,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            std::initializer_list&lt;ObdService *&gt; obdServices);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_class" href="classObdEmulator_1_1ObdEmulator.html">~ObdEmulator</a>();</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1ObdEmulator.html#a4ce8aae1c6292c3b33dc5c95ce49c050">   31</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classObdEmulator_1_1ObdEmulator.html#a4ce8aae1c6292c3b33dc5c95ce49c050">Start</a>();</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1ObdEmulator.html#a57880dab3c882749143ed5f440dc5f54">   34</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classObdEmulator_1_1ObdEmulator.html#a57880dab3c882749143ed5f440dc5f54">Stop</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    };</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassObdEmulator_1_1CommunicationLayer_html"><div class="ttname"><a href="classObdEmulator_1_1CommunicationLayer.html">ObdEmulator::CommunicationLayer</a></div><div class="ttdoc">Communication medium abstraction layer to send and receive data.</div><div class="ttdef"><b>Definition:</b> communication_layer.h:12</div></div>
 <div class="ttc" id="aclassObdEmulator_1_1ObdEmulator_html"><div class="ttname"><a href="classObdEmulator_1_1ObdEmulator.html">ObdEmulator::ObdEmulator</a></div><div class="ttdoc">A class that routes OBD queries to their corresponding services.</div><div class="ttdef"><b>Definition:</b> obd_emulator.h:12</div></div>
 <div class="ttc" id="aclassObdEmulator_1_1ObdEmulator_html_a4ce8aae1c6292c3b33dc5c95ce49c050"><div class="ttname"><a href="classObdEmulator_1_1ObdEmulator.html#a4ce8aae1c6292c3b33dc5c95ce49c050">ObdEmulator::ObdEmulator::Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">Start the emulation.</div></div>
