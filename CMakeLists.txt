@@ -37,10 +37,13 @@ set(include_dir
 set(source_dir
   "${PROJECT_SOURCE_DIR}/src")
 
-# Test Directory:
+# Test Directories:
 
 set(test_dir
   "${PROJECT_SOURCE_DIR}/test")
+
+set(test_helpers_dir
+  "${PROJECT_SOURCE_DIR}/test/helpers")
 
 # Samples Directory
 
@@ -57,6 +60,7 @@ add_library(
   ${source_dir}/can_driver.cpp
   ${source_dir}/obd_service.cpp
   ${source_dir}/communication_layer.cpp
+  ${source_dir}/obd_emulator.cpp
 )
 
 target_include_directories(obd_ii_emulator
@@ -68,10 +72,13 @@ if(build_tests)
 
   add_executable(
     obd_ii_emulator_test
+    ${test_helpers_dir}/loopback_communication_layer.cpp
+    ${test_helpers_dir}/dummy_obd_service.cpp
     ${test_dir}/can_frame_test.cpp
     ${test_dir}/can_driver_test.cpp
     ${test_dir}/obd_service_test.cpp
     ${test_dir}/communication_layer_test.cpp
+    ${test_dir}/obd_emulator_test.cpp
   )
 
   target_link_libraries(

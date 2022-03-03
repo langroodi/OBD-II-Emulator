@@ -11,16 +11,21 @@ namespace ObdEmulator
     class ObdEmulator
     {
     private:
-        CommunicationLayer* mCommunicationLayer;
-        std::map<uint8_t, ObdService*> mObdServices;
+        CommunicationLayer *mCommunicationLayer;
+        std::map<uint8_t, ObdService *> mObdServices;
+
+        bool processQuery(
+            std::vector<uint8_t> &&query,
+            std::vector<uint8_t> &response);
 
     public:
         /// @brief Constructor
         /// @param communicationLayer CAN communication medium abstraction layer
         /// @param obdServices Supported OBD-II services during the emulation
         ObdEmulator(
-            CommunicationLayer* communicationLayer,
-            std::initializer_list<ObdService*> obdServices);
+            CommunicationLayer *communicationLayer,
+            std::initializer_list<ObdService *> obdServices);
+        ~ObdEmulator();
 
         /// @brief Start the emulation
         void Start();

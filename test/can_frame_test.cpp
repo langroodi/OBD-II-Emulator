@@ -13,7 +13,7 @@ namespace ObdEmulator
 
         CanFrame Frame;
 
-        CanFrameTest() : Frame(cId, cExtended, cRemote, std::initializer_list<uint8_t>{0, 1, 2, 3, 4, 5, 6, 7}),
+        CanFrameTest() : Frame(cId, cExtended, cRemote, {0, 1, 2, 3, 4, 5, 6, 7}),
                          cDataArray{0, 1, 2, 3, 4, 5, 6, 7}
         {
         }
