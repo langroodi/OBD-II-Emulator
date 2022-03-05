@@ -115,31 +115,22 @@ Inheritance diagram for ObdEmulator::SerialCommunication:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3fbad69e7ce4e0174a65589d74c5168b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1SerialCommunication.html#a3fbad69e7ce4e0174a65589d74c5168b">SerialCommunication</a> (std::string serialPort, uint32_t baudrate)</td></tr>
-<tr class="memdesc:a3fbad69e7ce4e0174a65589d74c5168b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classObdEmulator_1_1SerialCommunication.html#a3fbad69e7ce4e0174a65589d74c5168b">More...</a><br /></td></tr>
-<tr class="separator:a3fbad69e7ce4e0174a65589d74c5168b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20efaab17a6c79325eb77700770d6769"><td class="memItemLeft" align="right" valign="top"><a id="a20efaab17a6c79325eb77700770d6769" name="a20efaab17a6c79325eb77700770d6769"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> () override</td></tr>
-<tr class="separator:a20efaab17a6c79325eb77700770d6769"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e80c67eb9087e097afd06782e54e36c"><td class="memItemLeft" align="right" valign="top"><a id="a0e80c67eb9087e097afd06782e54e36c" name="a0e80c67eb9087e097afd06782e54e36c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Send</b> (const std::vector&lt; uint8_t &gt; &amp;data) override</td></tr>
-<tr class="separator:a0e80c67eb9087e097afd06782e54e36c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b3b66df772e4c0a046162a8c31377c5"><td class="memItemLeft" align="right" valign="top"><a id="a4b3b66df772e4c0a046162a8c31377c5" name="a4b3b66df772e4c0a046162a8c31377c5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> () override</td></tr>
-<tr class="separator:a4b3b66df772e4c0a046162a8c31377c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a296cfad294fa5501a1913e7a0c36a0b9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1SerialCommunication.html#a296cfad294fa5501a1913e7a0c36a0b9">SerialCommunication</a> (std::string serialPort, speed_t baudrate)</td></tr>
+<tr class="memdesc:a296cfad294fa5501a1913e7a0c36a0b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classObdEmulator_1_1SerialCommunication.html#a296cfad294fa5501a1913e7a0c36a0b9">More...</a><br /></td></tr>
+<tr class="separator:a296cfad294fa5501a1913e7a0c36a0b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65c950cfec0de17bafc4593171ba1beb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1SerialCommunication.html#a65c950cfec0de17bafc4593171ba1beb">TryStart</a> () override</td></tr>
+<tr class="memdesc:a65c950cfec0de17bafc4593171ba1beb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to start the communication.  <a href="classObdEmulator_1_1SerialCommunication.html#a65c950cfec0de17bafc4593171ba1beb">More...</a><br /></td></tr>
+<tr class="separator:a65c950cfec0de17bafc4593171ba1beb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d1203f09b7dc68f19a1e56ef8bc5d61"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1SerialCommunication.html#a2d1203f09b7dc68f19a1e56ef8bc5d61">TryStop</a> () override</td></tr>
+<tr class="memdesc:a2d1203f09b7dc68f19a1e56ef8bc5d61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to stop the communication.  <a href="classObdEmulator_1_1SerialCommunication.html#a2d1203f09b7dc68f19a1e56ef8bc5d61">More...</a><br /></td></tr>
+<tr class="separator:a2d1203f09b7dc68f19a1e56ef8bc5d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classObdEmulator_1_1CommunicationLayer"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classObdEmulator_1_1CommunicationLayer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classObdEmulator_1_1CommunicationLayer.html">ObdEmulator::CommunicationLayer</a></td></tr>
-<tr class="memitem:a41261fcd60d7eb117676b50847e7359b inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#a41261fcd60d7eb117676b50847e7359b">TryStart</a> ()=0</td></tr>
-<tr class="memdesc:a41261fcd60d7eb117676b50847e7359b inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to start the communication.  <a href="classObdEmulator_1_1CommunicationLayer.html#a41261fcd60d7eb117676b50847e7359b">More...</a><br /></td></tr>
-<tr class="separator:a41261fcd60d7eb117676b50847e7359b inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac203f0028dc798a777d3d4846b152ce5 inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ac203f0028dc798a777d3d4846b152ce5">SetCallback</a> (<a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ada1c3855abb2bbf3aa9e9c6401e9883d">CallbackType</a> &amp;&amp;callback)</td></tr>
 <tr class="memdesc:ac203f0028dc798a777d3d4846b152ce5 inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a data received callaback.  <a href="classObdEmulator_1_1CommunicationLayer.html#ac203f0028dc798a777d3d4846b152ce5">More...</a><br /></td></tr>
 <tr class="separator:ac203f0028dc798a777d3d4846b152ce5 inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaff4bf35238bf0168e454cd09729b7e inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#abaff4bf35238bf0168e454cd09729b7e">ResetCallback</a> () noexcept</td></tr>
 <tr class="memdesc:abaff4bf35238bf0168e454cd09729b7e inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the data received callback if it has been already set.  <a href="classObdEmulator_1_1CommunicationLayer.html#abaff4bf35238bf0168e454cd09729b7e">More...</a><br /></td></tr>
 <tr class="separator:abaff4bf35238bf0168e454cd09729b7e inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff44e7960d58314a624290bb44d61ae9 inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#aff44e7960d58314a624290bb44d61ae9">TryStop</a> ()=0</td></tr>
-<tr class="memdesc:aff44e7960d58314a624290bb44d61ae9 inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to stop the communication.  <a href="classObdEmulator_1_1CommunicationLayer.html#aff44e7960d58314a624290bb44d61ae9">More...</a><br /></td></tr>
-<tr class="separator:aff44e7960d58314a624290bb44d61ae9 inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -156,8 +147,8 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Serial port communication layer. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3fbad69e7ce4e0174a65589d74c5168b" name="a3fbad69e7ce4e0174a65589d74c5168b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fbad69e7ce4e0174a65589d74c5168b">&#9670;&nbsp;</a></span>SerialCommunication()</h2>
+<a id="a296cfad294fa5501a1913e7a0c36a0b9" name="a296cfad294fa5501a1913e7a0c36a0b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a296cfad294fa5501a1913e7a0c36a0b9">&#9670;&nbsp;</a></span>SerialCommunication()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -171,7 +162,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">speed_t&#160;</td>
           <td class="paramname"><em>baudrate</em>&#160;</td>
         </tr>
         <tr>
@@ -186,10 +177,71 @@ Additional Inherited Members</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">serialPort</td><td>Serial port address </td></tr>
-    <tr><td class="paramname">baudRate</td><td>Serial communication baud rate </td></tr>
+    <tr><td class="paramname">baudrate</td><td>Serial communication baud rate </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a65c950cfec0de17bafc4593171ba1beb" name="a65c950cfec0de17bafc4593171ba1beb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65c950cfec0de17bafc4593171ba1beb">&#9670;&nbsp;</a></span>TryStart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ObdEmulator::SerialCommunication::TryStart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Try to start the communication. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the communication start was successful, otherwise false </dd></dl>
+
+<p>Implements <a class="el" href="classObdEmulator_1_1CommunicationLayer.html#a41261fcd60d7eb117676b50847e7359b">ObdEmulator::CommunicationLayer</a>.</p>
+
+</div>
+</div>
+<a id="a2d1203f09b7dc68f19a1e56ef8bc5d61" name="a2d1203f09b7dc68f19a1e56ef8bc5d61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d1203f09b7dc68f19a1e56ef8bc5d61">&#9670;&nbsp;</a></span>TryStop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ObdEmulator::SerialCommunication::TryStop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Try to stop the communication. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the communication stop was successful, otherwise false </dd></dl>
+
+<p>Implements <a class="el" href="classObdEmulator_1_1CommunicationLayer.html#aff44e7960d58314a624290bb44d61ae9">ObdEmulator::CommunicationLayer</a>.</p>
 
 </div>
 </div>

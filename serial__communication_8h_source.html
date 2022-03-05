@@ -107,31 +107,34 @@ $(document).ready(function(){initNavTree('serial__communication_8h_source.html',
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1SerialCommunication.html">   11</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classObdEmulator_1_1SerialCommunication.html">SerialCommunication</a> : <span class="keyword">public</span> <a class="code hl_class" href="classObdEmulator_1_1CommunicationLayer.html">CommunicationLayer</a></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">volatile</span> sig_atomic_t mSignalReceived;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        std::future&lt;void&gt; mFuture;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        std::string mSerialPort;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        uint32_t mBaudRate;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordtype">void</span> onSignalReceived(<span class="keywordtype">int</span> signum);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordtype">void</span> onDataReceived(std::vector&lt;uint8_t&gt;&amp;&amp; receivedData);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> cErrorCode{-1};</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keyword">volatile</span> sig_atomic_t mSignalReceived;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        std::future&lt;void&gt; mFuture;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        std::string mSerialPort;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        speed_t mBaudrate;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordtype">int</span> mFileDescriptor;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1SerialCommunication.html#a3fbad69e7ce4e0174a65589d74c5168b">   26</a></span>        <a class="code hl_function" href="classObdEmulator_1_1SerialCommunication.html#a3fbad69e7ce4e0174a65589d74c5168b">SerialCommunication</a>(std::string serialPort, uint32_t baudrate);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_class" href="classObdEmulator_1_1SerialCommunication.html">~SerialCommunication</a>();</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordtype">void</span> Start() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">void</span> Send(<span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;data) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordtype">void</span> Stop() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    };</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordtype">void</span> onSignalReceived(<span class="keywordtype">int</span> signum);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordtype">void</span> onDataReceived(std::vector&lt;uint8_t&gt;&amp;&amp; receivedData);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1SerialCommunication.html#a296cfad294fa5501a1913e7a0c36a0b9">   29</a></span>        <a class="code hl_function" href="classObdEmulator_1_1SerialCommunication.html#a296cfad294fa5501a1913e7a0c36a0b9">SerialCommunication</a>(std::string serialPort, speed_t baudrate);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_class" href="classObdEmulator_1_1SerialCommunication.html">~SerialCommunication</a>();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1SerialCommunication.html#a65c950cfec0de17bafc4593171ba1beb">   33</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classObdEmulator_1_1SerialCommunication.html#a65c950cfec0de17bafc4593171ba1beb">TryStart</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1SerialCommunication.html#a2d1203f09b7dc68f19a1e56ef8bc5d61">   35</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classObdEmulator_1_1SerialCommunication.html#a2d1203f09b7dc68f19a1e56ef8bc5d61">TryStop</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    };</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassObdEmulator_1_1CommunicationLayer_html"><div class="ttname"><a href="classObdEmulator_1_1CommunicationLayer.html">ObdEmulator::CommunicationLayer</a></div><div class="ttdoc">Communication medium abstraction layer to send and receive data.</div><div class="ttdef"><b>Definition:</b> communication_layer.h:12</div></div>
 <div class="ttc" id="aclassObdEmulator_1_1SerialCommunication_html"><div class="ttname"><a href="classObdEmulator_1_1SerialCommunication.html">ObdEmulator::SerialCommunication</a></div><div class="ttdoc">Serial port communication layer.</div><div class="ttdef"><b>Definition:</b> serial_communication.h:12</div></div>
-<div class="ttc" id="aclassObdEmulator_1_1SerialCommunication_html_a3fbad69e7ce4e0174a65589d74c5168b"><div class="ttname"><a href="classObdEmulator_1_1SerialCommunication.html#a3fbad69e7ce4e0174a65589d74c5168b">ObdEmulator::SerialCommunication::SerialCommunication</a></div><div class="ttdeci">SerialCommunication(std::string serialPort, uint32_t baudrate)</div><div class="ttdoc">Constructor.</div></div>
+<div class="ttc" id="aclassObdEmulator_1_1SerialCommunication_html_a296cfad294fa5501a1913e7a0c36a0b9"><div class="ttname"><a href="classObdEmulator_1_1SerialCommunication.html#a296cfad294fa5501a1913e7a0c36a0b9">ObdEmulator::SerialCommunication::SerialCommunication</a></div><div class="ttdeci">SerialCommunication(std::string serialPort, speed_t baudrate)</div><div class="ttdoc">Constructor.</div></div>
+<div class="ttc" id="aclassObdEmulator_1_1SerialCommunication_html_a2d1203f09b7dc68f19a1e56ef8bc5d61"><div class="ttname"><a href="classObdEmulator_1_1SerialCommunication.html#a2d1203f09b7dc68f19a1e56ef8bc5d61">ObdEmulator::SerialCommunication::TryStop</a></div><div class="ttdeci">bool TryStop() override</div><div class="ttdoc">Try to stop the communication.</div></div>
+<div class="ttc" id="aclassObdEmulator_1_1SerialCommunication_html_a65c950cfec0de17bafc4593171ba1beb"><div class="ttname"><a href="classObdEmulator_1_1SerialCommunication.html#a65c950cfec0de17bafc4593171ba1beb">ObdEmulator::SerialCommunication::TryStart</a></div><div class="ttdeci">bool TryStart() override</div><div class="ttdoc">Try to start the communication.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
