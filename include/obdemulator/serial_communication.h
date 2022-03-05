@@ -11,10 +11,13 @@ namespace ObdEmulator
     class SerialCommunication : public CommunicationLayer
     {
     private:
+        static const int cErrorCode{-1};
+
         volatile sig_atomic_t mSignalReceived;
         std::future<void> mFuture;
         std::string mSerialPort;
-        uint32_t mBaudRate;
+        speed_t mBaudrate;
+        int mFileDescriptor;
 
         void onSignalReceived(int signum);
         void onDataReceived(std::vector<uint8_t>&& receivedData);
@@ -22,16 +25,14 @@ namespace ObdEmulator
     public:
         /// @brief Constructor
         /// @param serialPort Serial port address
-        /// @param baudRate Serial communication baud rate
-        SerialCommunication(std::string serialPort, uint32_t baudrate);
+        /// @param baudrate Serial communication baud rate
+        SerialCommunication(std::string serialPort, speed_t baudrate);
 
         ~SerialCommunication();
 
-        void Start() override;
+        bool TryStart() override;
 
-        void Send(const std::vector<uint8_t> &data) override;
-
-        void Stop() override;
+        bool TryStop() override;
     };
 }
 
