@@ -109,14 +109,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5b248ce7449d5cb23373029dbb73c48c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdEmulator.html#a5b248ce7449d5cb23373029dbb73c48c">ObdEmulator</a> (<a class="el" href="classObdEmulator_1_1CommunicationLayer.html">CommunicationLayer</a> *communicationLayer, std::initializer_list&lt; <a class="el" href="classObdEmulator_1_1ObdService.html">ObdService</a> * &gt; obdServices)</td></tr>
 <tr class="memdesc:a5b248ce7449d5cb23373029dbb73c48c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classObdEmulator_1_1ObdEmulator.html#a5b248ce7449d5cb23373029dbb73c48c">More...</a><br /></td></tr>
 <tr class="separator:a5b248ce7449d5cb23373029dbb73c48c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ce8aae1c6292c3b33dc5c95ce49c050"><td class="memItemLeft" align="right" valign="top"><a id="a4ce8aae1c6292c3b33dc5c95ce49c050" name="a4ce8aae1c6292c3b33dc5c95ce49c050"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> ()</td></tr>
-<tr class="memdesc:a4ce8aae1c6292c3b33dc5c95ce49c050"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the emulation. <br /></td></tr>
-<tr class="separator:a4ce8aae1c6292c3b33dc5c95ce49c050"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57880dab3c882749143ed5f440dc5f54"><td class="memItemLeft" align="right" valign="top"><a id="a57880dab3c882749143ed5f440dc5f54" name="a57880dab3c882749143ed5f440dc5f54"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
-<tr class="memdesc:a57880dab3c882749143ed5f440dc5f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the emulation. <br /></td></tr>
-<tr class="separator:a57880dab3c882749143ed5f440dc5f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbd8374058fbdcec7185416ec503903b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdEmulator.html#afbd8374058fbdcec7185416ec503903b">TryStart</a> ()</td></tr>
+<tr class="memdesc:afbd8374058fbdcec7185416ec503903b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to start the emulation.  <a href="classObdEmulator_1_1ObdEmulator.html#afbd8374058fbdcec7185416ec503903b">More...</a><br /></td></tr>
+<tr class="separator:afbd8374058fbdcec7185416ec503903b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60785597dd43e57a2b906e3ad73c803f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdEmulator.html#a60785597dd43e57a2b906e3ad73c803f">TryStop</a> ()</td></tr>
+<tr class="memdesc:a60785597dd43e57a2b906e3ad73c803f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to stop the emulation.  <a href="classObdEmulator_1_1ObdEmulator.html#a60785597dd43e57a2b906e3ad73c803f">More...</a><br /></td></tr>
+<tr class="separator:a60785597dd43e57a2b906e3ad73c803f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A class that routes OBD queries to their corresponding services. </p>
@@ -155,6 +153,47 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="afbd8374058fbdcec7185416ec503903b" name="afbd8374058fbdcec7185416ec503903b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbd8374058fbdcec7185416ec503903b">&#9670;&nbsp;</a></span>TryStart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ObdEmulator::ObdEmulator::TryStart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Try to start the emulation. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the emulation start was successful, otherwise false </dd></dl>
+
+</div>
+</div>
+<a id="a60785597dd43e57a2b906e3ad73c803f" name="a60785597dd43e57a2b906e3ad73c803f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60785597dd43e57a2b906e3ad73c803f">&#9670;&nbsp;</a></span>TryStop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ObdEmulator::ObdEmulator::TryStop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Try to stop the emulation. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the emulation stop was successful, otherwise false </dd></dl>
 
 </div>
 </div>

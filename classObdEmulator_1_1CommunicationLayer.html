@@ -123,18 +123,18 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab6672b8da52b1503c8afb07935da6ec0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ab6672b8da52b1503c8afb07935da6ec0">Start</a> ()=0</td></tr>
-<tr class="memdesc:ab6672b8da52b1503c8afb07935da6ec0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the communication.  <a href="classObdEmulator_1_1CommunicationLayer.html#ab6672b8da52b1503c8afb07935da6ec0">More...</a><br /></td></tr>
-<tr class="separator:ab6672b8da52b1503c8afb07935da6ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41261fcd60d7eb117676b50847e7359b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#a41261fcd60d7eb117676b50847e7359b">TryStart</a> ()=0</td></tr>
+<tr class="memdesc:a41261fcd60d7eb117676b50847e7359b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to start the communication.  <a href="classObdEmulator_1_1CommunicationLayer.html#a41261fcd60d7eb117676b50847e7359b">More...</a><br /></td></tr>
+<tr class="separator:a41261fcd60d7eb117676b50847e7359b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac203f0028dc798a777d3d4846b152ce5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ac203f0028dc798a777d3d4846b152ce5">SetCallback</a> (<a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ada1c3855abb2bbf3aa9e9c6401e9883d">CallbackType</a> &amp;&amp;callback)</td></tr>
 <tr class="memdesc:ac203f0028dc798a777d3d4846b152ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a data received callaback.  <a href="classObdEmulator_1_1CommunicationLayer.html#ac203f0028dc798a777d3d4846b152ce5">More...</a><br /></td></tr>
 <tr class="separator:ac203f0028dc798a777d3d4846b152ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaff4bf35238bf0168e454cd09729b7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#abaff4bf35238bf0168e454cd09729b7e">ResetCallback</a> () noexcept</td></tr>
 <tr class="memdesc:abaff4bf35238bf0168e454cd09729b7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the data received callback if it has been already set.  <a href="classObdEmulator_1_1CommunicationLayer.html#abaff4bf35238bf0168e454cd09729b7e">More...</a><br /></td></tr>
 <tr class="separator:abaff4bf35238bf0168e454cd09729b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61f426a88f61ff1ae3817739a6ea3c25"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#a61f426a88f61ff1ae3817739a6ea3c25">Stop</a> ()=0</td></tr>
-<tr class="memdesc:a61f426a88f61ff1ae3817739a6ea3c25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the communication.  <a href="classObdEmulator_1_1CommunicationLayer.html#a61f426a88f61ff1ae3817739a6ea3c25">More...</a><br /></td></tr>
-<tr class="separator:a61f426a88f61ff1ae3817739a6ea3c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff44e7960d58314a624290bb44d61ae9"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#aff44e7960d58314a624290bb44d61ae9">TryStop</a> ()=0</td></tr>
+<tr class="memdesc:aff44e7960d58314a624290bb44d61ae9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to stop the communication.  <a href="classObdEmulator_1_1CommunicationLayer.html#aff44e7960d58314a624290bb44d61ae9">More...</a><br /></td></tr>
+<tr class="separator:aff44e7960d58314a624290bb44d61ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -218,8 +218,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab6672b8da52b1503c8afb07935da6ec0" name="ab6672b8da52b1503c8afb07935da6ec0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab6672b8da52b1503c8afb07935da6ec0">&#9670;&nbsp;</a></span>Start()</h2>
+<a id="a41261fcd60d7eb117676b50847e7359b" name="a41261fcd60d7eb117676b50847e7359b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41261fcd60d7eb117676b50847e7359b">&#9670;&nbsp;</a></span>TryStart()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -228,7 +228,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void ObdEmulator::CommunicationLayer::Start </td>
+          <td class="memname">virtual bool ObdEmulator::CommunicationLayer::TryStart </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -241,14 +241,13 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Start the communication. </p>
-
-<p>Implemented in <a class="el" href="classObdEmulator_1_1SerialCommunication.html#a20efaab17a6c79325eb77700770d6769">ObdEmulator::SerialCommunication</a>.</p>
+<p>Try to start the communication. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the communication start was successful, otherwise false </dd></dl>
 
 </div>
 </div>
-<a id="a61f426a88f61ff1ae3817739a6ea3c25" name="a61f426a88f61ff1ae3817739a6ea3c25"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61f426a88f61ff1ae3817739a6ea3c25">&#9670;&nbsp;</a></span>Stop()</h2>
+<a id="aff44e7960d58314a624290bb44d61ae9" name="aff44e7960d58314a624290bb44d61ae9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff44e7960d58314a624290bb44d61ae9">&#9670;&nbsp;</a></span>TryStop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -257,7 +256,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void ObdEmulator::CommunicationLayer::Stop </td>
+          <td class="memname">virtual bool ObdEmulator::CommunicationLayer::TryStop </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -270,9 +269,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Stop the communication. </p>
-
-<p>Implemented in <a class="el" href="classObdEmulator_1_1SerialCommunication.html#a4b3b66df772e4c0a046162a8c31377c5">ObdEmulator::SerialCommunication</a>.</p>
+<p>Try to stop the communication. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the communication stop was successful, otherwise false </dd></dl>
 
 </div>
 </div>
