@@ -11,12 +11,14 @@ namespace ObdEmulator
             std::vector<uint8_t> &response);
 
     public:
-        void Start() override
+        bool TryStart() override
         {
+            return true;
         }
 
-        void Stop() override
+        bool TryStop() override
         {
+            return true;
         }
     };
 

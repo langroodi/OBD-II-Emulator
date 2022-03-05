@@ -95,26 +95,43 @@ namespace ObdEmulator
         return _result;
     }
 
-    void ObdEmulator::Start()
+    bool ObdEmulator::TryStart()
     {
-        mCommunicationLayer->Start();
+        bool _result{mCommunicationLayer->TryStart()};
 
-        auto _callback{std::bind(
-            &ObdEmulator::processQuery,
-            this,
-            std::placeholders::_1,
-            std::placeholders::_2)};
-        mCommunicationLayer->SetCallback(_callback);
+        if (_result)
+        {
+            auto _callback{std::bind(
+                &ObdEmulator::processQuery,
+                this,
+                std::placeholders::_1,
+                std::placeholders::_2)};
+            mCommunicationLayer->SetCallback(_callback);
+        }
+
+        return _result;
     }
 
-    void ObdEmulator::Stop()
+    bool ObdEmulator::TryStop()
     {
-        mCommunicationLayer->ResetCallback();
-        mCommunicationLayer->Stop();
+        bool _result{mCommunicationLayer->TryStop()};
+
+        if (_result)
+        {
+            mCommunicationLayer->ResetCallback();
+        }
+
+        return _result;
     }
 
     ObdEmulator::~ObdEmulator()
     {
-        Stop();
+        bool _succeed{TryStop()};
+
+        // Reset the callback anyhow
+        if (!_succeed)
+        {
+            mCommunicationLayer->ResetCallback();
+        }
     }
 }

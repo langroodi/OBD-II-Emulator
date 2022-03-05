@@ -5,8 +5,9 @@ namespace ObdEmulator
 {
     namespace Helpers
     {
-        void LoopbackCommunicationLayer::Start()
+        bool LoopbackCommunicationLayer::TryStart()
         {
+            return true;
         }
 
         CanFrame LoopbackCommunicationLayer::Send(const CanFrame &queryFrame)
@@ -25,13 +26,14 @@ namespace ObdEmulator
             }
         }
 
-        void LoopbackCommunicationLayer::Stop()
+        bool LoopbackCommunicationLayer::TryStop()
         {
+            return true;
         }
 
         LoopbackCommunicationLayer::~LoopbackCommunicationLayer()
         {
-            Stop();
+            TryStop();
         }
     }
 }

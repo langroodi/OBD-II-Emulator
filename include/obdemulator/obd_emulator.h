@@ -27,11 +27,13 @@ namespace ObdEmulator
             std::initializer_list<ObdService *> obdServices);
         ~ObdEmulator();
 
-        /// @brief Start the emulation
-        void Start();
+        /// @brief Try to start the emulation
+        /// @returns True if the emulation start was successful, otherwise false
+        bool TryStart();
 
-        /// @brief Stop the emulation
-        void Stop();
+        /// @brief Try to stop the emulation
+        /// @returns True if the emulation stop was successful, otherwise false
+        bool TryStop();
     };
 }
 

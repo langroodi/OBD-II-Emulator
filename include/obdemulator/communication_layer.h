@@ -23,8 +23,9 @@ namespace ObdEmulator
         CommunicationLayer() noexcept;
         virtual ~CommunicationLayer() noexcept = default;
 
-        /// @brief Start the communication
-        virtual void Start() = 0;
+        /// @brief Try to start the communication
+        /// @returns True if the communication start was successful, otherwise false
+        virtual bool TryStart() = 0;
 
         /// @brief Set a data received callaback
         /// @param callback Callback to be invoked when a data is received
@@ -34,8 +35,9 @@ namespace ObdEmulator
         /// @see SetCallback
         void ResetCallback() noexcept;
 
-        /// @brief Stop the communication
-        virtual void Stop() = 0;
+        /// @brief Try to stop the communication
+        /// @returns True if the communication stop was successful, otherwise false
+        virtual bool TryStop() = 0;
     };
 }
 

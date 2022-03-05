@@ -14,11 +14,11 @@ namespace ObdEmulator
             LoopbackCommunicationLayer() noexcept = default;
             ~LoopbackCommunicationLayer();
 
-            void Start() override;
+            bool TryStart() override;
 
             CanFrame Send(const CanFrame &queryFrame);
 
-            void Stop() override;
+            bool TryStop() override;
         };
     }
 }

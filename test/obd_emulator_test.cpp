@@ -26,12 +26,12 @@ namespace ObdEmulator
 
         void SetUp() override
         {
-            mObdEmulator.Start();
+            mObdEmulator.TryStart();
         }
 
         void TearDown() override
         {
-            mObdEmulator.Stop();
+            mObdEmulator.TryStop();
         }
     };
 
