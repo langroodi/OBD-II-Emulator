@@ -115,9 +115,9 @@ Inheritance diagram for ObdEmulator::SerialCommunication:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a296cfad294fa5501a1913e7a0c36a0b9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1SerialCommunication.html#a296cfad294fa5501a1913e7a0c36a0b9">SerialCommunication</a> (std::string serialPort, speed_t baudrate)</td></tr>
-<tr class="memdesc:a296cfad294fa5501a1913e7a0c36a0b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classObdEmulator_1_1SerialCommunication.html#a296cfad294fa5501a1913e7a0c36a0b9">More...</a><br /></td></tr>
-<tr class="separator:a296cfad294fa5501a1913e7a0c36a0b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac1bbd432a00891d31954edf60ae8071"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1SerialCommunication.html#aac1bbd432a00891d31954edf60ae8071">SerialCommunication</a> (std::string serialPort, speed_t baudrate, int timeout=1)</td></tr>
+<tr class="memdesc:aac1bbd432a00891d31954edf60ae8071"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classObdEmulator_1_1SerialCommunication.html#aac1bbd432a00891d31954edf60ae8071">More...</a><br /></td></tr>
+<tr class="separator:aac1bbd432a00891d31954edf60ae8071"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65c950cfec0de17bafc4593171ba1beb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1SerialCommunication.html#a65c950cfec0de17bafc4593171ba1beb">TryStart</a> () override</td></tr>
 <tr class="memdesc:a65c950cfec0de17bafc4593171ba1beb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to start the communication.  <a href="classObdEmulator_1_1SerialCommunication.html#a65c950cfec0de17bafc4593171ba1beb">More...</a><br /></td></tr>
 <tr class="separator:a65c950cfec0de17bafc4593171ba1beb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,8 +147,8 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Serial port communication layer. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a296cfad294fa5501a1913e7a0c36a0b9" name="a296cfad294fa5501a1913e7a0c36a0b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a296cfad294fa5501a1913e7a0c36a0b9">&#9670;&nbsp;</a></span>SerialCommunication()</h2>
+<a id="aac1bbd432a00891d31954edf60ae8071" name="aac1bbd432a00891d31954edf60ae8071"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac1bbd432a00891d31954edf60ae8071">&#9670;&nbsp;</a></span>SerialCommunication()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,7 +163,13 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">speed_t&#160;</td>
-          <td class="paramname"><em>baudrate</em>&#160;</td>
+          <td class="paramname"><em>baudrate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -178,6 +184,13 @@ Additional Inherited Members</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">serialPort</td><td>Serial port address </td></tr>
     <tr><td class="paramname">baudrate</td><td>Serial communication baud rate </td></tr>
+    <tr><td class="paramname">timeout</td><td>Polling timeout in milliseconds (1 ms by default) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>Throws if the flow control signal creation failed </td></tr>
   </table>
   </dd>
 </dl>
