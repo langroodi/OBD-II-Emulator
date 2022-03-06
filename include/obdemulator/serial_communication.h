@@ -1,7 +1,8 @@
 #ifndef SERIAL_COMMUNICATION_H
 #define SERIAL_COMMUNICATION_H
 
-#include <signal.h>
+#include <poll.h>
+#include <queue>
 #include <future>
 #include "./communication_layer.h"
 
@@ -12,21 +13,32 @@ namespace ObdEmulator
     {
     private:
         static const int cErrorCode{-1};
+        static const size_t cSingalFdIndex{0};
+        static const size_t cCommunicationFdIndex{1};
+        static const size_t cNumberOfFileDescriptors{2};
+        static const size_t cReadBufferSize{20};
 
-        volatile sig_atomic_t mSignalReceived;
-        std::future<void> mFuture;
-        std::string mSerialPort;
-        speed_t mBaudrate;
-        int mFileDescriptor;
+        const std::string mSerialPort;
+        const speed_t mBaudrate;
+        const int mTimeout;
 
-        void onSignalReceived(int signum);
-        void onDataReceived(std::vector<uint8_t>&& receivedData);
+        struct pollfd mFileDescriptors[cNumberOfFileDescriptors];
+        std::queue<std::vector<uint8_t>> mSendBuffer;
+        std::future<bool> mFuture;
+
+        bool trySetupCommunication(int &fileDescriptor) noexcept;
+        bool tryReceive();
+        bool trySend();
+        bool tryPoll();
 
     public:
         /// @brief Constructor
         /// @param serialPort Serial port address
         /// @param baudrate Serial communication baud rate
-        SerialCommunication(std::string serialPort, speed_t baudrate);
+        /// @param timeout Polling timeout in milliseconds (1 ms by default)
+        /// @throws std::runtime_error Throws if the flow control signal creation failed
+        SerialCommunication(
+            std::string serialPort, speed_t baudrate, int timeout = 1);
 
         ~SerialCommunication();
 

@@ -61,6 +61,7 @@ add_library(
   ${source_dir}/obd_service.cpp
   ${source_dir}/communication_layer.cpp
   ${source_dir}/obd_emulator.cpp
+  ${source_dir}/serial_communication.cpp
 )
 
 target_include_directories(obd_ii_emulator

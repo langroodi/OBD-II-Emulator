@@ -1,30 +1,72 @@
+#include <signal.h>
 #include <fcntl.h>
-#include <asm/termbits.h>
-#include <sys/ioctl.h>
+#include <errno.h>
 #include <unistd.h>
+#include <asm/termbits.h>
+#include <sys/signalfd.h>
+#include <sys/ioctl.h>
 #include "../include/obdemulator/serial_communication.h"
 
 namespace ObdEmulator
 {
     SerialCommunication::SerialCommunication(
-        std::string serialPort, speed_t baudrate) : mSerialPort{serialPort},
-                                                    mBaudrate{baudrate}
+        std::string serialPort,
+        speed_t baudrate,
+        int timeout) : mSerialPort{serialPort},
+                       mBaudrate{baudrate},
+                       mTimeout{timeout}
+
     {
+        sigset_t _signalSet;
+
+        // Create an empty signal set
+        bool _succeed{sigemptyset(&_signalSet) > cErrorCode};
+
+        if (_succeed)
+        {
+            // Add the first Linux user signal to the set
+            _succeed = (sigaddset(&_signalSet, SIGUSR1) > cErrorCode);
+
+            if (_succeed)
+            {
+                // Block the signals within the set to handle them via polling
+                _succeed = (sigprocmask(SIG_BLOCK, &_signalSet, NULL) > cErrorCode);
+
+                if (_succeed)
+                {
+                    // Create a new file descriptor for the signal set for polling
+                    int _signalFd{signalfd(-1, &_signalSet, 0)};
+                    _succeed = _signalFd > cErrorCode;
+
+                    if (_succeed)
+                    {
+                        // Add the created signal file descriptor to the polling array
+                        mFileDescriptors[cSingalFdIndex].fd = _signalFd;
+                        mFileDescriptors[cSingalFdIndex].events = POLLIN;
+                    }
+                }
+            }
+        }
+
+        if (!_succeed)
+        {
+            throw std::runtime_error("The flow control signal creation transaction failed.");
+        }
     }
 
-    bool SerialCommunication::TryStart()
+    bool SerialCommunication::trySetupCommunication(int &fileDescriptor) noexcept
     {
         // Open the serial port for reading and writing while disabling the
         // controlling terminal and enabling the non-blocking transmission
-        mFileDescriptor = open(mSerialPort.c_str(), O_RDWR | O_NOCTTY | O_NDELAY);
+        fileDescriptor = open(mSerialPort.c_str(), O_RDWR | O_NOCTTY | O_NONBLOCK);
 
-        bool _result{mFileDescriptor < cErrorCode};
+        bool _result{fileDescriptor < cErrorCode};
 
         if (_result)
         {
             // Get the serial communication current options
             struct termios2 _options;
-            _result &= (ioctl(mFileDescriptor, TCGETS2, &_options) > cErrorCode);
+            _result &= (ioctl(fileDescriptor, TCGETS2, &_options) > cErrorCode);
 
             if (_result)
             {
@@ -56,7 +98,149 @@ namespace ObdEmulator
                 _options.c_ospeed = mBaudrate;
 
                 // Set the serial communication new options
-                _result &= (ioctl(mFileDescriptor, TCSETS2, &_options) > cErrorCode);
+                _result &= (ioctl(fileDescriptor, TCSETS2, &_options) > cErrorCode);
+            }
+        }
+
+        return _result;
+    }
+
+    bool SerialCommunication::tryReceive()
+    {
+        int _communicationFd{mFileDescriptors[cCommunicationFdIndex].fd};
+        std::vector<uint8_t> _readBuffer(cReadBufferSize);
+
+        auto _numberOfReadBytes{
+            read(_communicationFd, _readBuffer.data(), cReadBufferSize)};
+
+        bool _result;
+        if (_numberOfReadBytes == cErrorCode)
+        {
+            // In case of the read would block or it was interrupted by a signal,
+            // set the result to true in order to keep the polling loop running
+            _result =
+                (errno == EAGAIN) || (errno == EWOULDBLOCK) || (errno == EINTR);
+        }
+        else
+        {
+            std::vector<uint8_t> _response;
+            bool _handled{Callback(std::move(_readBuffer), _response)};
+
+            // If the query is handled, queue its response for sending
+            if (_handled)
+            {
+                mSendBuffer.push(std::move(_response));
+            }
+
+            // Regardless of whether the query was handled or not in this case,
+            // set the result to true in order to keep the polling loop running
+            _result = true;
+        }
+
+        return _result;
+    }
+
+    bool SerialCommunication::trySend()
+    {
+        int _communicationFd{mFileDescriptors[cCommunicationFdIndex].fd};
+        bool _result{true};
+
+        // To avoid starvation, try sending as many as the send buffer queue size is
+        size_t n{mSendBuffer.size()};
+        for (size_t i; i < n; i++)
+        {
+            std::vector<uint8_t> _response{mSendBuffer.front()};
+
+            auto _numberOfSentBytes{
+                write(_communicationFd, _response.data(), _response.size())};
+
+            if (_numberOfSentBytes == _response.size())
+            {
+                // Remove the response from queue if it was sent successfully
+                mSendBuffer.pop();
+            }
+            else if (_numberOfSentBytes == cErrorCode)
+            {
+                if ((errno != EAGAIN) && (errno != EWOULDBLOCK) && (errno != EINTR))
+                {
+                    // In case of the sending failure was NOT because of it would block nor
+                    // it was interrupted by a signal, stop the polling loop immediately
+                    _result = false;
+                    break;
+                }
+            }
+        }
+
+        return _result;
+    }
+
+    bool SerialCommunication::tryPoll()
+    {
+        bool _result{true};
+        bool _running{true};
+
+        while (_running)
+        {
+            int _polledFileDescriptors{
+                poll(mFileDescriptors, cNumberOfFileDescriptors, mTimeout)};
+
+            if (_polledFileDescriptors > 0)
+            {
+                // Check whether the signal has been raised or not
+                if (mFileDescriptors[cSingalFdIndex].revents & POLLIN)
+                {
+                    int _signalFd{mFileDescriptors[cSingalFdIndex].fd};
+                    struct signalfd_siginfo _signalInfo;
+
+                    auto _readSize{read(_signalFd, &_signalInfo, sizeof(_signalInfo))};
+
+                    // The read size should be at least equal to the size of the singal info.
+                    _result = _readSize == sizeof(_signalInfo);
+                    _running = false;
+                }
+                else
+                {
+                    if (mFileDescriptors[cCommunicationFdIndex].revents & POLLIN)
+                    {
+                        _result &= tryReceive();
+                    }
+
+                    if (mFileDescriptors[cCommunicationFdIndex].revents & POLLOUT)
+                    {
+                        _result &= trySend();
+                    }
+
+                    // Break the loop if the receiving nor send failed
+                    _running = _result;
+                }
+            }
+            else if ((_polledFileDescriptors == cErrorCode) && (errno != EINTR))
+            {
+                // Only poll again if the polling was intruppted by a signal,
+                // otherwise stop the polling loop and return in the error state
+                _result = false;
+                _running = false;
+            }
+        }
+
+        return _result;
+    }
+
+    bool SerialCommunication::TryStart()
+    {
+        // To start the communication the future should NOT have a valid state
+        bool _result{!mFuture.valid()};
+
+        if (_result)
+        {
+            int _communictionFd;
+            _result = trySetupCommunication(_communictionFd);
+
+            if (_result)
+            {
+                mFuture =
+                    std::async(
+                        std::launch::async, &SerialCommunication::tryPoll, this);
             }
         }
 
@@ -65,12 +249,34 @@ namespace ObdEmulator
 
     bool SerialCommunication::TryStop()
     {
-        bool _result{close(mFileDescriptor)};
+        // To stop the communication the future SHOULD have a valid state
+        bool _result{mFuture.valid()};
+
+        if (_result)
+        {
+            // Raise the first Linux user signal to stop the polling
+            _result = raise(SIGUSR1) == 0;
+
+            if (_result)
+            {
+                // Wait for the future which contains the polling loop to finish gracefully
+                _result = mFuture.get();
+
+                // Regardless of the polling loop graceful stopping success, close the communication
+                int _communicationFd{mFileDescriptors[cCommunicationFdIndex].fd};
+                _result &= close(_communicationFd) > cErrorCode;
+            }
+        }
+
         return _result;
     }
 
     SerialCommunication::~SerialCommunication()
     {
         TryStop();
+
+        // Regardless of the communication stopping success, release the first Linux user signal
+        int _signalFd{mFileDescriptors[cSingalFdIndex].fd};
+        close(_signalFd);
     }
 }
