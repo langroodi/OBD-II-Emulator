@@ -91,3 +91,16 @@ if(build_tests)
   include(GoogleTest)
   gtest_discover_tests(obd_ii_emulator_test)
 endif()
+
+if(build_samples)
+  add_executable(
+    obd_emulator_sample
+    ${sample_dir}/current_data_obd_service.cpp
+    ${sample_dir}/obd_emulator_sample.cpp
+  )
+
+  target_link_libraries(
+    obd_emulator_sample
+    obd_ii_emulator
+  )
+endif()

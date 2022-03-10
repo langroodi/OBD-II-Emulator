@@ -9,7 +9,6 @@ namespace ObdEmulator
     {
         class DummyObdService : public ObdService
         {
-        private:
         public:
             static const uint8_t cService{0x01}; // Show current data
             static const uint8_t cVehicleSpeedPid{0x0d};

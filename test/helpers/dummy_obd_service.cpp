@@ -20,7 +20,7 @@ namespace ObdEmulator
 
             if (_queriedPid == cVehicleSpeedPid)
             {
-                response.push_back(cVehicleSpeed);
+                response = {cVehicleSpeed};
                 return true;
             }
             else
