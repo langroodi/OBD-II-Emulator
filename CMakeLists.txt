@@ -64,6 +64,11 @@ add_library(
   ${source_dir}/serial_communication.cpp
 )
 
+target_link_libraries(
+  obd_ii_emulator
+  pthread
+)
+
 target_include_directories(obd_ii_emulator
   INTERFACE ${include_dir}
 )

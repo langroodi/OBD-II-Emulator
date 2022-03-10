@@ -4,6 +4,7 @@
 #include <poll.h>
 #include <queue>
 #include <future>
+#include <asm/termbits.h>
 #include "./communication_layer.h"
 
 namespace ObdEmulator

@@ -5,7 +5,7 @@
 
 namespace ObdEmulator
 {
-    class CurrentDataObdService : ObdService
+    class CurrentDataObdService : public ObdService
     {
     private:
         static const uint8_t cService{0x01};

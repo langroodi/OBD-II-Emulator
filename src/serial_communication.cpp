@@ -2,7 +2,6 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <unistd.h>
-#include <asm/termbits.h>
 #include <sys/signalfd.h>
 #include <sys/ioctl.h>
 #include "../include/obdemulator/serial_communication.h"
