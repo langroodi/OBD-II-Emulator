@@ -144,7 +144,7 @@ namespace ObdEmulator
 
         // To avoid starvation, try sending as many as the send buffer queue size is
         size_t n{mSendBuffer.size()};
-        for (size_t i; i < n; i++)
+        for (size_t i = 0; i < n; i++)
         {
             std::vector<uint8_t> _response{mSendBuffer.front()};
 

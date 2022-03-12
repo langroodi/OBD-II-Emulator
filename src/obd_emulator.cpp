@@ -58,7 +58,13 @@ namespace ObdEmulator
             std::vector<uint8_t> _serviceResponseData;
             _result = _obdService->TryGetResponse(_pid, _serviceResponseData);
 
-            // Insert service response byte at the beginning
+            // Insert the queried PID at the beginning of the response
+            _serviceResponseData.insert(
+                _serviceResponseData.begin(),
+                _pid.begin(),
+                _pid.end());
+
+            // Insert the response service byte at the beginning
             int _responseServiceInt{_queriedService + cResponseServiceOffset};
             auto _responseService{static_cast<uint8_t>(_responseServiceInt)};
             _serviceResponseData.insert(
