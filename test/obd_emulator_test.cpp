@@ -16,7 +16,7 @@ namespace ObdEmulator
         const uint8_t cQuerySize{2};
         const uint8_t cResponseServiceOfsset{0x40};
         const size_t cResponseServiceIndex{1};
-        const size_t cResponseDataIndex{2};
+        const size_t cResponseDataIndex{3};
 
         CanDriver mCanDriver;
         Helpers::LoopbackCommunicationLayer mCommunicationLayer;
