@@ -121,7 +121,7 @@ $(document).ready(function(){initNavTree('can__driver_8h_source.html',''); initR
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1CanDriver.html">   26</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classObdEmulator_1_1CanDriver.html">CanDriver</a></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    {</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1CanDriver.html#a99ccd5703ba2c343b66206fbff31a179">   30</a></span>        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classObdEmulator_1_1CanDriver.html#a99ccd5703ba2c343b66206fbff31a179">cFixedFrameSize</a>{20};</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1CanDriver.html#a7f5710725e4eca1d3635cd9de2855e5e">   30</a></span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classObdEmulator_1_1CanDriver.html#a7f5710725e4eca1d3635cd9de2855e5e">cFixedFrameSize</a>{20};</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">size_t</span> cStandardIdSize{2};</div>
@@ -131,43 +131,49 @@ $(document).ready(function(){initNavTree('can__driver_8h_source.html',''); initR
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">static</span> <span class="keyword">const</span> uint8_t cExtendedBitMask{0x20};</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">static</span> <span class="keyword">const</span> uint8_t cRemoteBitMask{0x10};</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">static</span> std::array&lt;uint8_t, cStandardIdSize&gt; getStandardIdArray(</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            uint32_t <span class="keywordtype">id</span>);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keyword">static</span> std::array&lt;uint8_t, cExtendedIdSize&gt; getExtendedIdArray(</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            uint32_t <span class="keywordtype">id</span>);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">static</span> uint32_t getStandardId(</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            uint8_t firstByte,</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            uint8_t lastByte);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keyword">static</span> uint32_t getExtendedId(</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            uint8_t firstByte,</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            uint8_t secondtByte,</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            uint8_t thirdByte,</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            uint8_t lastByte);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keyword">static</span> <span class="keywordtype">void</span> setChecksum(</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            std::array&lt;uint8_t, cFixedFrameSize&gt; &amp;data);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">const</span> <span class="keywordtype">bool</span> mSupportExtended;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        std::array&lt;uint8_t, cFixedFrameSize&gt; mConfiguration;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">static</span> std::array&lt;uint8_t, cStandardIdSize&gt; getStandardIdArray(</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            uint32_t <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">static</span> std::array&lt;uint8_t, cExtendedIdSize&gt; getExtendedIdArray(</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            uint32_t <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">static</span> uint32_t getStandardId(</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            uint8_t firstByte,</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            uint8_t lastByte);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keyword">static</span> uint32_t getExtendedId(</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            uint8_t firstByte,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            uint8_t secondtByte,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            uint8_t thirdByte,</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            uint8_t lastByte);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        CanDriver() = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keyword">static</span> <span class="keywordtype">void</span> setChecksum(</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            std::array&lt;uint8_t, cFixedFrameSize&gt; &amp;data);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1CanDriver.html#a9a7ee90360e5d8f44b7e51e7c3d42a45">   65</a></span>        <span class="keyword">static</span> std::array&lt;uint8_t, cFixedFrameSize&gt; <a class="code hl_function" href="classObdEmulator_1_1CanDriver.html#a9a7ee90360e5d8f44b7e51e7c3d42a45">GetConfiguration</a>(</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            CanBusSpeed speed, <span class="keywordtype">bool</span> supportExtended);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1CanDriver.html#a550ecbcdf865dcf7454f55c336843ed8">   71</a></span>        <span class="keyword">static</span> std::vector&lt;uint8_t&gt; <a class="code hl_function" href="classObdEmulator_1_1CanDriver.html#a550ecbcdf865dcf7454f55c336843ed8">Serialize</a>(</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="keyword">const</span> <a class="code hl_class" href="classObdEmulator_1_1CanFrame.html">CanFrame</a> &amp;frame);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1CanDriver.html#a3cc48b4b661f136e05f10b58db4efcbf">   78</a></span>        <span class="keyword">static</span> <a class="code hl_class" href="classObdEmulator_1_1CanFrame.html">CanFrame</a> <a class="code hl_function" href="classObdEmulator_1_1CanDriver.html#a3cc48b4b661f136e05f10b58db4efcbf">Deserialize</a>(<span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;packet);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    };</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keyword">static</span> std::array&lt;uint8_t, cFixedFrameSize&gt; getConfigurationArray(</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            CanBusSpeed speed, <span class="keywordtype">bool</span> supportExtended);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1CanDriver.html#a74854e94caa36d3d74b84c97163fee39">   68</a></span>        <a class="code hl_function" href="classObdEmulator_1_1CanDriver.html#a74854e94caa36d3d74b84c97163fee39">CanDriver</a>(CanBusSpeed speed, <span class="keywordtype">bool</span> supportExtended);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_class" href="classObdEmulator_1_1CanDriver.html">CanDriver</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1CanDriver.html#aabb1657c8c263c64d84db006365d4c8d">   73</a></span>        std::vector&lt;uint8_t&gt; <a class="code hl_function" href="classObdEmulator_1_1CanDriver.html#aabb1657c8c263c64d84db006365d4c8d">GetConfiguration</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1CanDriver.html#a0563affcd8ecf1f5eff18d89cdb67f81">   79</a></span>        std::vector&lt;uint8_t&gt; <a class="code hl_function" href="classObdEmulator_1_1CanDriver.html#a0563affcd8ecf1f5eff18d89cdb67f81">Serialize</a>(<span class="keyword">const</span> <a class="code hl_class" href="classObdEmulator_1_1CanFrame.html">CanFrame</a> &amp;frame) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1CanDriver.html#a9299513017cef229bcc8e3b448c848f2">   85</a></span>        <a class="code hl_class" href="classObdEmulator_1_1CanFrame.html">CanFrame</a> <a class="code hl_function" href="classObdEmulator_1_1CanDriver.html#a9299513017cef229bcc8e3b448c848f2">Deserialize</a>(<span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;packet) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    };</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassObdEmulator_1_1CanDriver_html"><div class="ttname"><a href="classObdEmulator_1_1CanDriver.html">ObdEmulator::CanDriver</a></div><div class="ttdoc">CAN bus controller driver helper.</div><div class="ttdef"><b>Definition:</b> can_driver.h:27</div></div>
-<div class="ttc" id="aclassObdEmulator_1_1CanDriver_html_a3cc48b4b661f136e05f10b58db4efcbf"><div class="ttname"><a href="classObdEmulator_1_1CanDriver.html#a3cc48b4b661f136e05f10b58db4efcbf">ObdEmulator::CanDriver::Deserialize</a></div><div class="ttdeci">static CanFrame Deserialize(const std::vector&lt; uint8_t &gt; &amp;packet)</div><div class="ttdoc">Deserialize a packet to a CAN frame.</div></div>
-<div class="ttc" id="aclassObdEmulator_1_1CanDriver_html_a550ecbcdf865dcf7454f55c336843ed8"><div class="ttname"><a href="classObdEmulator_1_1CanDriver.html#a550ecbcdf865dcf7454f55c336843ed8">ObdEmulator::CanDriver::Serialize</a></div><div class="ttdeci">static std::vector&lt; uint8_t &gt; Serialize(const CanFrame &amp;frame)</div><div class="ttdoc">Serialize a CAN frame to a variable length byte array.</div></div>
-<div class="ttc" id="aclassObdEmulator_1_1CanDriver_html_a99ccd5703ba2c343b66206fbff31a179"><div class="ttname"><a href="classObdEmulator_1_1CanDriver.html#a99ccd5703ba2c343b66206fbff31a179">ObdEmulator::CanDriver::cFixedFrameSize</a></div><div class="ttdeci">static const size_t cFixedFrameSize</div><div class="ttdoc">Fixed CAN frame data packet size.</div><div class="ttdef"><b>Definition:</b> can_driver.h:30</div></div>
-<div class="ttc" id="aclassObdEmulator_1_1CanDriver_html_a9a7ee90360e5d8f44b7e51e7c3d42a45"><div class="ttname"><a href="classObdEmulator_1_1CanDriver.html#a9a7ee90360e5d8f44b7e51e7c3d42a45">ObdEmulator::CanDriver::GetConfiguration</a></div><div class="ttdeci">static std::array&lt; uint8_t, cFixedFrameSize &gt; GetConfiguration(CanBusSpeed speed, bool supportExtended)</div><div class="ttdoc">Get CAN bus communication configuration packet.</div></div>
+<div class="ttc" id="aclassObdEmulator_1_1CanDriver_html_a0563affcd8ecf1f5eff18d89cdb67f81"><div class="ttname"><a href="classObdEmulator_1_1CanDriver.html#a0563affcd8ecf1f5eff18d89cdb67f81">ObdEmulator::CanDriver::Serialize</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; Serialize(const CanFrame &amp;frame) const</div><div class="ttdoc">Serialize a CAN frame to a variable length byte array.</div></div>
+<div class="ttc" id="aclassObdEmulator_1_1CanDriver_html_a74854e94caa36d3d74b84c97163fee39"><div class="ttname"><a href="classObdEmulator_1_1CanDriver.html#a74854e94caa36d3d74b84c97163fee39">ObdEmulator::CanDriver::CanDriver</a></div><div class="ttdeci">CanDriver(CanBusSpeed speed, bool supportExtended)</div><div class="ttdoc">Constructor.</div></div>
+<div class="ttc" id="aclassObdEmulator_1_1CanDriver_html_a7f5710725e4eca1d3635cd9de2855e5e"><div class="ttname"><a href="classObdEmulator_1_1CanDriver.html#a7f5710725e4eca1d3635cd9de2855e5e">ObdEmulator::CanDriver::cFixedFrameSize</a></div><div class="ttdeci">static constexpr size_t cFixedFrameSize</div><div class="ttdoc">Fixed CAN frame data packet size.</div><div class="ttdef"><b>Definition:</b> can_driver.h:30</div></div>
+<div class="ttc" id="aclassObdEmulator_1_1CanDriver_html_a9299513017cef229bcc8e3b448c848f2"><div class="ttname"><a href="classObdEmulator_1_1CanDriver.html#a9299513017cef229bcc8e3b448c848f2">ObdEmulator::CanDriver::Deserialize</a></div><div class="ttdeci">CanFrame Deserialize(const std::vector&lt; uint8_t &gt; &amp;packet) const</div><div class="ttdoc">Deserialize a packet to a CAN frame.</div></div>
+<div class="ttc" id="aclassObdEmulator_1_1CanDriver_html_aabb1657c8c263c64d84db006365d4c8d"><div class="ttname"><a href="classObdEmulator_1_1CanDriver.html#aabb1657c8c263c64d84db006365d4c8d">ObdEmulator::CanDriver::GetConfiguration</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; GetConfiguration() const</div><div class="ttdoc">Get CAN bus communication configuration packet.</div></div>
 <div class="ttc" id="aclassObdEmulator_1_1CanFrame_html"><div class="ttname"><a href="classObdEmulator_1_1CanFrame.html">ObdEmulator::CanFrame</a></div><div class="ttdoc">CAN transmission packet frame.</div><div class="ttdef"><b>Definition:</b> can_frame.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

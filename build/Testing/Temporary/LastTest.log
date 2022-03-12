@@ -1,0 +1,408 @@
+Start testing: Mar 12 13:33 UTC
+----------------------------------------------------------
+1/15 Testing: CanFrameTest.IdProperty
+1/15 Test: CanFrameTest.IdProperty
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=CanFrameTest.IdProperty" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"CanFrameTest.IdProperty" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CanFrameTest.IdProperty
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CanFrameTest
+[ RUN      ] CanFrameTest.IdProperty
+[       OK ] CanFrameTest.IdProperty (0 ms)
+[----------] 1 test from CanFrameTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"CanFrameTest.IdProperty" end time: Mar 12 13:33 UTC
+"CanFrameTest.IdProperty" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/15 Testing: CanFrameTest.ExtendedProperty
+2/15 Test: CanFrameTest.ExtendedProperty
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=CanFrameTest.ExtendedProperty" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"CanFrameTest.ExtendedProperty" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CanFrameTest.ExtendedProperty
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CanFrameTest
+[ RUN      ] CanFrameTest.ExtendedProperty
+[       OK ] CanFrameTest.ExtendedProperty (0 ms)
+[----------] 1 test from CanFrameTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CanFrameTest.ExtendedProperty" end time: Mar 12 13:33 UTC
+"CanFrameTest.ExtendedProperty" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/15 Testing: CanFrameTest.RemoteProperty
+3/15 Test: CanFrameTest.RemoteProperty
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=CanFrameTest.RemoteProperty" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"CanFrameTest.RemoteProperty" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CanFrameTest.RemoteProperty
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CanFrameTest
+[ RUN      ] CanFrameTest.RemoteProperty
+[       OK ] CanFrameTest.RemoteProperty (0 ms)
+[----------] 1 test from CanFrameTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CanFrameTest.RemoteProperty" end time: Mar 12 13:33 UTC
+"CanFrameTest.RemoteProperty" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/15 Testing: CanFrameTest.DataLengthProperty
+4/15 Test: CanFrameTest.DataLengthProperty
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=CanFrameTest.DataLengthProperty" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"CanFrameTest.DataLengthProperty" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CanFrameTest.DataLengthProperty
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CanFrameTest
+[ RUN      ] CanFrameTest.DataLengthProperty
+[       OK ] CanFrameTest.DataLengthProperty (0 ms)
+[----------] 1 test from CanFrameTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CanFrameTest.DataLengthProperty" end time: Mar 12 13:33 UTC
+"CanFrameTest.DataLengthProperty" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/15 Testing: CanFrameTest.DataProperty
+5/15 Test: CanFrameTest.DataProperty
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=CanFrameTest.DataProperty" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"CanFrameTest.DataProperty" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CanFrameTest.DataProperty
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CanFrameTest
+[ RUN      ] CanFrameTest.DataProperty
+[       OK ] CanFrameTest.DataProperty (0 ms)
+[----------] 1 test from CanFrameTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CanFrameTest.DataProperty" end time: Mar 12 13:33 UTC
+"CanFrameTest.DataProperty" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/15 Testing: CanDriverTest.GetConfigurationMethod
+6/15 Test: CanDriverTest.GetConfigurationMethod
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=CanDriverTest.GetConfigurationMethod" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"CanDriverTest.GetConfigurationMethod" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CanDriverTest.GetConfigurationMethod
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CanDriverTest
+[ RUN      ] CanDriverTest.GetConfigurationMethod
+[       OK ] CanDriverTest.GetConfigurationMethod (0 ms)
+[----------] 1 test from CanDriverTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CanDriverTest.GetConfigurationMethod" end time: Mar 12 13:33 UTC
+"CanDriverTest.GetConfigurationMethod" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/15 Testing: CanDriverTest.StandardSerializeMethod
+7/15 Test: CanDriverTest.StandardSerializeMethod
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=CanDriverTest.StandardSerializeMethod" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"CanDriverTest.StandardSerializeMethod" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CanDriverTest.StandardSerializeMethod
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CanDriverTest
+[ RUN      ] CanDriverTest.StandardSerializeMethod
+[       OK ] CanDriverTest.StandardSerializeMethod (0 ms)
+[----------] 1 test from CanDriverTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CanDriverTest.StandardSerializeMethod" end time: Mar 12 13:33 UTC
+"CanDriverTest.StandardSerializeMethod" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/15 Testing: CanDriverTest.ExtendedSerializeMethod
+8/15 Test: CanDriverTest.ExtendedSerializeMethod
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=CanDriverTest.ExtendedSerializeMethod" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"CanDriverTest.ExtendedSerializeMethod" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CanDriverTest.ExtendedSerializeMethod
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CanDriverTest
+[ RUN      ] CanDriverTest.ExtendedSerializeMethod
+[       OK ] CanDriverTest.ExtendedSerializeMethod (0 ms)
+[----------] 1 test from CanDriverTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CanDriverTest.ExtendedSerializeMethod" end time: Mar 12 13:33 UTC
+"CanDriverTest.ExtendedSerializeMethod" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/15 Testing: CanDriverTest.StandardDeserializeMethod
+9/15 Test: CanDriverTest.StandardDeserializeMethod
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=CanDriverTest.StandardDeserializeMethod" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"CanDriverTest.StandardDeserializeMethod" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CanDriverTest.StandardDeserializeMethod
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CanDriverTest
+[ RUN      ] CanDriverTest.StandardDeserializeMethod
+[       OK ] CanDriverTest.StandardDeserializeMethod (0 ms)
+[----------] 1 test from CanDriverTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CanDriverTest.StandardDeserializeMethod" end time: Mar 12 13:33 UTC
+"CanDriverTest.StandardDeserializeMethod" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/15 Testing: CanDriverTest.ExtendedDeserializeMethod
+10/15 Test: CanDriverTest.ExtendedDeserializeMethod
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=CanDriverTest.ExtendedDeserializeMethod" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"CanDriverTest.ExtendedDeserializeMethod" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CanDriverTest.ExtendedDeserializeMethod
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CanDriverTest
+[ RUN      ] CanDriverTest.ExtendedDeserializeMethod
+[       OK ] CanDriverTest.ExtendedDeserializeMethod (0 ms)
+[----------] 1 test from CanDriverTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CanDriverTest.ExtendedDeserializeMethod" end time: Mar 12 13:33 UTC
+"CanDriverTest.ExtendedDeserializeMethod" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/15 Testing: ObdServiceTest.GetServiceMethod
+11/15 Test: ObdServiceTest.GetServiceMethod
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=ObdServiceTest.GetServiceMethod" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"ObdServiceTest.GetServiceMethod" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ObdServiceTest.GetServiceMethod
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ObdServiceTest
+[ RUN      ] ObdServiceTest.GetServiceMethod
+[       OK ] ObdServiceTest.GetServiceMethod (0 ms)
+[----------] 1 test from ObdServiceTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ObdServiceTest.GetServiceMethod" end time: Mar 12 13:33 UTC
+"ObdServiceTest.GetServiceMethod" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/15 Testing: CommunicationLayerTest.Constructor
+12/15 Test: CommunicationLayerTest.Constructor
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=CommunicationLayerTest.Constructor" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"CommunicationLayerTest.Constructor" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CommunicationLayerTest.Constructor
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CommunicationLayerTest
+[ RUN      ] CommunicationLayerTest.Constructor
+[       OK ] CommunicationLayerTest.Constructor (0 ms)
+[----------] 1 test from CommunicationLayerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CommunicationLayerTest.Constructor" end time: Mar 12 13:33 UTC
+"CommunicationLayerTest.Constructor" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/15 Testing: CommunicationLayerTest.SetCallbackMethod
+13/15 Test: CommunicationLayerTest.SetCallbackMethod
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=CommunicationLayerTest.SetCallbackMethod" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"CommunicationLayerTest.SetCallbackMethod" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CommunicationLayerTest.SetCallbackMethod
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CommunicationLayerTest
+[ RUN      ] CommunicationLayerTest.SetCallbackMethod
+[       OK ] CommunicationLayerTest.SetCallbackMethod (0 ms)
+[----------] 1 test from CommunicationLayerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CommunicationLayerTest.SetCallbackMethod" end time: Mar 12 13:33 UTC
+"CommunicationLayerTest.SetCallbackMethod" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/15 Testing: CommunicationLayerTest.ResetCallbackMethod
+14/15 Test: CommunicationLayerTest.ResetCallbackMethod
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=CommunicationLayerTest.ResetCallbackMethod" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"CommunicationLayerTest.ResetCallbackMethod" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CommunicationLayerTest.ResetCallbackMethod
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CommunicationLayerTest
+[ RUN      ] CommunicationLayerTest.ResetCallbackMethod
+[       OK ] CommunicationLayerTest.ResetCallbackMethod (0 ms)
+[----------] 1 test from CommunicationLayerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CommunicationLayerTest.ResetCallbackMethod" end time: Mar 12 13:33 UTC
+"CommunicationLayerTest.ResetCallbackMethod" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/15 Testing: ObdEmulatorTest.LoopbackScenario
+15/15 Test: ObdEmulatorTest.LoopbackScenario
+Command: "/home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/obd_ii_emulator_test" "--gtest_filter=ObdEmulatorTest.LoopbackScenario" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build
+"ObdEmulatorTest.LoopbackScenario" start time: Mar 12 13:33 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/OBD-II-Emulator/OBD-II-Emulator/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ObdEmulatorTest.LoopbackScenario
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ObdEmulatorTest
+[ RUN      ] ObdEmulatorTest.LoopbackScenario
+[       OK ] ObdEmulatorTest.LoopbackScenario (0 ms)
+[----------] 1 test from ObdEmulatorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ObdEmulatorTest.LoopbackScenario" end time: Mar 12 13:33 UTC
+"ObdEmulatorTest.LoopbackScenario" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Mar 12 13:33 UTC

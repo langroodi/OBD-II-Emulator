@@ -106,9 +106,9 @@ $(document).ready(function(){initNavTree('classObdEmulator_1_1ObdEmulator.html',
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5b248ce7449d5cb23373029dbb73c48c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdEmulator.html#a5b248ce7449d5cb23373029dbb73c48c">ObdEmulator</a> (<a class="el" href="classObdEmulator_1_1CommunicationLayer.html">CommunicationLayer</a> *communicationLayer, std::initializer_list&lt; <a class="el" href="classObdEmulator_1_1ObdService.html">ObdService</a> * &gt; obdServices)</td></tr>
-<tr class="memdesc:a5b248ce7449d5cb23373029dbb73c48c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classObdEmulator_1_1ObdEmulator.html#a5b248ce7449d5cb23373029dbb73c48c">More...</a><br /></td></tr>
-<tr class="separator:a5b248ce7449d5cb23373029dbb73c48c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e4146d2a3e7bcc20726ee6a35b7ea53"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdEmulator.html#a6e4146d2a3e7bcc20726ee6a35b7ea53">ObdEmulator</a> (<a class="el" href="classObdEmulator_1_1CommunicationLayer.html">CommunicationLayer</a> *communicationLayer, const <a class="el" href="classObdEmulator_1_1CanDriver.html">CanDriver</a> *canDriver, std::initializer_list&lt; <a class="el" href="classObdEmulator_1_1ObdService.html">ObdService</a> * &gt; obdServices)</td></tr>
+<tr class="memdesc:a6e4146d2a3e7bcc20726ee6a35b7ea53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classObdEmulator_1_1ObdEmulator.html#a6e4146d2a3e7bcc20726ee6a35b7ea53">More...</a><br /></td></tr>
+<tr class="separator:a6e4146d2a3e7bcc20726ee6a35b7ea53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbd8374058fbdcec7185416ec503903b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdEmulator.html#afbd8374058fbdcec7185416ec503903b">TryStart</a> ()</td></tr>
 <tr class="memdesc:afbd8374058fbdcec7185416ec503903b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to start the emulation.  <a href="classObdEmulator_1_1ObdEmulator.html#afbd8374058fbdcec7185416ec503903b">More...</a><br /></td></tr>
 <tr class="separator:afbd8374058fbdcec7185416ec503903b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,8 +119,8 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A class that routes OBD queries to their corresponding services. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5b248ce7449d5cb23373029dbb73c48c" name="a5b248ce7449d5cb23373029dbb73c48c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b248ce7449d5cb23373029dbb73c48c">&#9670;&nbsp;</a></span>ObdEmulator()</h2>
+<a id="a6e4146d2a3e7bcc20726ee6a35b7ea53" name="a6e4146d2a3e7bcc20726ee6a35b7ea53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e4146d2a3e7bcc20726ee6a35b7ea53">&#9670;&nbsp;</a></span>ObdEmulator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -130,6 +130,12 @@ Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html">CommunicationLayer</a> *&#160;</td>
           <td class="paramname"><em>communicationLayer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classObdEmulator_1_1CanDriver.html">CanDriver</a> *&#160;</td>
+          <td class="paramname"><em>canDriver</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -149,6 +155,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">communicationLayer</td><td>CAN communication medium abstraction layer </td></tr>
+    <tr><td class="paramname">canDriver</td><td>CAN USB to serial communication driver </td></tr>
     <tr><td class="paramname">obdServices</td><td>Supported OBD-II services during the emulation </td></tr>
   </table>
   </dd>
