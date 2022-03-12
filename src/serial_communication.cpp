@@ -1,4 +1,3 @@
-#include <signal.h>
 #include <fcntl.h>
 #include <errno.h>
 #include <unistd.h>
@@ -14,7 +13,6 @@ namespace ObdEmulator
         int timeout) : mSerialPort{serialPort},
                        mBaudrate{baudrate},
                        mTimeout{timeout}
-
     {
         sigset_t _signalSet;
 
@@ -24,7 +22,7 @@ namespace ObdEmulator
         if (_succeed)
         {
             // Add the first Linux user signal to the set
-            _succeed = (sigaddset(&_signalSet, SIGUSR1) > cErrorCode);
+            _succeed = (sigaddset(&_signalSet, cSignal) > cErrorCode);
 
             if (_succeed)
             {
@@ -59,7 +57,7 @@ namespace ObdEmulator
         // controlling terminal and enabling the non-blocking transmission
         fileDescriptor = open(mSerialPort.c_str(), O_RDWR | O_NOCTTY | O_NONBLOCK);
 
-        bool _result{fileDescriptor < cErrorCode};
+        bool _result{fileDescriptor > cErrorCode};
 
         if (_result)
         {
@@ -173,7 +171,7 @@ namespace ObdEmulator
         return _result;
     }
 
-    bool SerialCommunication::tryPoll()
+    void SerialCommunication::tryPoll()
     {
         bool _result{true};
         bool _running{true};
@@ -222,7 +220,7 @@ namespace ObdEmulator
             }
         }
 
-        return _result;
+        mPromise.set_value_at_thread_exit(_result);
     }
 
     bool SerialCommunication::TryStart()
@@ -237,9 +235,12 @@ namespace ObdEmulator
 
             if (_result)
             {
-                mFuture =
-                    std::async(
-                        std::launch::async, &SerialCommunication::tryPoll, this);
+                // Add the created communication file descriptor to the polling array
+                mFileDescriptors[cCommunicationFdIndex].fd = _communictionFd;
+                mFileDescriptors[cCommunicationFdIndex].events = POLLIN | POLLOUT;
+
+                mFuture = mPromise.get_future();
+                mPollingThread = std::thread(&SerialCommunication::tryPoll, this);
             }
         }
 
@@ -253,13 +254,19 @@ namespace ObdEmulator
 
         if (_result)
         {
+            pthread_t _threadHandle{mPollingThread.native_handle()};
             // Raise the first Linux user signal to stop the polling
-            _result = raise(SIGUSR1) == 0;
+            _result = pthread_kill(_threadHandle, cSignal) == 0;
 
             if (_result)
             {
                 // Wait for the future which contains the polling loop to finish gracefully
                 _result = mFuture.get();
+                // Wait for the polling thread to finish gracefully (if possible)
+                if (mPollingThread.joinable())
+                {
+                    mPollingThread.join();
+                }
 
                 // Regardless of the polling loop graceful stopping success, close the communication
                 int _communicationFd{mFileDescriptors[cCommunicationFdIndex].fd};

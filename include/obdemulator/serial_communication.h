@@ -1,6 +1,7 @@
 #ifndef SERIAL_COMMUNICATION_H
 #define SERIAL_COMMUNICATION_H
 
+#include <signal.h>
 #include <poll.h>
 #include <queue>
 #include <future>
@@ -14,6 +15,7 @@ namespace ObdEmulator
     {
     private:
         static const int cErrorCode{-1};
+        static const int cSignal{SIGUSR1};
         static const size_t cSingalFdIndex{0};
         static const size_t cCommunicationFdIndex{1};
         static const size_t cNumberOfFileDescriptors{2};
@@ -25,12 +27,14 @@ namespace ObdEmulator
 
         struct pollfd mFileDescriptors[cNumberOfFileDescriptors];
         std::queue<std::vector<uint8_t>> mSendBuffer;
+        std::promise<bool> mPromise;
         std::future<bool> mFuture;
+        std::thread mPollingThread;
 
         bool trySetupCommunication(int &fileDescriptor) noexcept;
         bool tryReceive();
         bool trySend();
-        bool tryPoll();
+        void tryPoll();
 
     public:
         /// @brief Constructor
