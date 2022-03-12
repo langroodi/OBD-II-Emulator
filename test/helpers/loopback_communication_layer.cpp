@@ -10,7 +10,7 @@ namespace ObdEmulator
         {
         }
 
-        bool LoopbackCommunicationLayer::TryStart()
+        bool LoopbackCommunicationLayer::TryStart(std::vector<uint8_t> &&configuration)
         {
             return true;
         }

@@ -223,7 +223,7 @@ namespace ObdEmulator
         mPromise.set_value_at_thread_exit(_result);
     }
 
-    bool SerialCommunication::TryStart()
+    bool SerialCommunication::TryStart(std::vector<uint8_t> &&configuration)
     {
         // To start the communication the future should NOT have a valid state
         bool _result{!mFuture.valid()};
@@ -238,6 +238,9 @@ namespace ObdEmulator
                 // Add the created communication file descriptor to the polling array
                 mFileDescriptors[cCommunicationFdIndex].fd = _communictionFd;
                 mFileDescriptors[cCommunicationFdIndex].events = POLLIN | POLLOUT;
+
+                // Enqueue the configuration packet before polling start
+                mSendBuffer.push(std::move(configuration));
 
                 mFuture = mPromise.get_future();
                 mPollingThread = std::thread(&SerialCommunication::tryPoll, this);
@@ -267,6 +270,10 @@ namespace ObdEmulator
                 {
                     mPollingThread.join();
                 }
+
+                // Regardless of the polling loop graceful stopping success, clear the send buffer
+                std::queue<std::vector<uint8_t>> _emptyQueue;
+                std::swap(mSendBuffer, _emptyQueue);
 
                 // Regardless of the polling loop graceful stopping success, close the communication
                 int _communicationFd{mFileDescriptors[cCommunicationFdIndex].fd};

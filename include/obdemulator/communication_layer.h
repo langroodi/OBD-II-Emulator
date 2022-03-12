@@ -24,8 +24,9 @@ namespace ObdEmulator
         virtual ~CommunicationLayer() noexcept = default;
 
         /// @brief Try to start the communication
+        /// @param configuration Configuration packet to sent to the endpoint right after the communication start
         /// @returns True if the communication start was successful, otherwise false
-        virtual bool TryStart() = 0;
+        virtual bool TryStart(std::vector<uint8_t> &&configuration) = 0;
 
         /// @brief Set a data received callaback
         /// @param callback Callback to be invoked when a data is received
@@ -37,6 +38,7 @@ namespace ObdEmulator
 
         /// @brief Try to stop the communication
         /// @returns True if the communication stop was successful, otherwise false
+        /// @note As the method side effect, it may clear the send and receive buffer
         virtual bool TryStop() = 0;
     };
 }

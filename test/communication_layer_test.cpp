@@ -11,7 +11,7 @@ namespace ObdEmulator
             std::vector<uint8_t> &response);
 
     public:
-        bool TryStart() override
+        bool TryStart(std::vector<uint8_t> &&configuration) override
         {
             return true;
         }

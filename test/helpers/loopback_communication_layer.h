@@ -17,7 +17,7 @@ namespace ObdEmulator
             LoopbackCommunicationLayer(const CanDriver *canDriver) noexcept;
             ~LoopbackCommunicationLayer();
 
-            bool TryStart() override;
+            bool TryStart(std::vector<uint8_t> &&configuration) override;
 
             CanFrame Send(const CanFrame &queryFrame);
 

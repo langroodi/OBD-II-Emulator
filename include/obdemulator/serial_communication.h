@@ -47,7 +47,7 @@ namespace ObdEmulator
 
         ~SerialCommunication();
 
-        bool TryStart() override;
+        bool TryStart(std::vector<uint8_t> &&configuration) override;
 
         bool TryStop() override;
     };

@@ -98,7 +98,8 @@ namespace ObdEmulator
 
     bool ObdEmulator::TryStart()
     {
-        bool _result{mCommunicationLayer->TryStart()};
+        std::vector<uint8_t> _configuration{mCanDriver->GetConfiguration()};
+        bool _result{mCommunicationLayer->TryStart(std::move(_configuration))};
 
         if (_result)
         {
