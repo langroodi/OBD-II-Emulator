@@ -10,8 +10,11 @@ namespace ObdEmulator
     {
         class LoopbackCommunicationLayer : public CommunicationLayer
         {
+        private:
+            const CanDriver *mCanDriver;
+
         public:
-            LoopbackCommunicationLayer() noexcept = default;
+            LoopbackCommunicationLayer(const CanDriver *canDriver) noexcept;
             ~LoopbackCommunicationLayer();
 
             bool TryStart() override;

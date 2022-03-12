@@ -5,6 +5,11 @@ namespace ObdEmulator
 {
     namespace Helpers
     {
+        LoopbackCommunicationLayer::LoopbackCommunicationLayer(
+            const CanDriver *canDriver) noexcept : mCanDriver(canDriver)
+        {
+        }
+
         bool LoopbackCommunicationLayer::TryStart()
         {
             return true;
@@ -12,12 +17,12 @@ namespace ObdEmulator
 
         CanFrame LoopbackCommunicationLayer::Send(const CanFrame &queryFrame)
         {
-            std::vector<uint8_t> _queryData{CanDriver::Serialize(queryFrame)};
+            std::vector<uint8_t> _queryData{mCanDriver->Serialize(queryFrame)};
             std::vector<uint8_t> _responseData;
             bool _succeed{Callback(std::move(_queryData), _responseData)};
             if (_succeed)
             {
-                CanFrame _result{CanDriver::Deserialize(_responseData)};
+                CanFrame _result{mCanDriver->Deserialize(_responseData)};
                 return _result;
             }
             else

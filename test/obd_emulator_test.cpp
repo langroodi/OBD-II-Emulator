@@ -8,19 +8,24 @@ namespace ObdEmulator
     class ObdEmulatorTest : public testing::Test
     {
     protected:
+        const CanBusSpeed cSpeed{CanBusSpeed::Speed5kbps};
+        const bool cSupportExtended{false};
         const uint32_t cQueryBroadcastId{0x7df};
-        const bool cIsExtended{false};
+        const bool cIsExtended{cSupportExtended};
         const bool cIsRtr{false};
         const uint8_t cQuerySize{2};
         const uint8_t cResponseServiceOfsset{0x40};
         const size_t cResponseServiceIndex{1};
         const size_t cResponseDataIndex{2};
 
+        CanDriver mCanDriver;
         Helpers::LoopbackCommunicationLayer mCommunicationLayer;
         Helpers::DummyObdService mObdService;
         ObdEmulator mObdEmulator;
 
-        ObdEmulatorTest() : mObdEmulator(&mCommunicationLayer, {&mObdService})
+        ObdEmulatorTest() : mCanDriver(cSpeed, cSupportExtended),
+                            mCommunicationLayer(&mCanDriver),
+                            mObdEmulator(&mCommunicationLayer, &mCanDriver, {&mObdService})
         {
         }
 

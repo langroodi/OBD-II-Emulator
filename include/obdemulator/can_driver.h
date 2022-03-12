@@ -27,7 +27,7 @@ namespace ObdEmulator
     {
     public:
         /// @brief Fixed CAN frame data packet size
-        static const size_t cFixedFrameSize{20};
+        static constexpr size_t cFixedFrameSize{20};
 
     private:
         static const size_t cStandardIdSize{2};
@@ -36,6 +36,9 @@ namespace ObdEmulator
         static const uint8_t cTrailerByte{0x55};
         static const uint8_t cExtendedBitMask{0x20};
         static const uint8_t cRemoteBitMask{0x10};
+
+        const bool mSupportExtended;
+        std::array<uint8_t, cFixedFrameSize> mConfiguration;
 
         static std::array<uint8_t, cStandardIdSize> getStandardIdArray(
             uint32_t id);
@@ -55,27 +58,31 @@ namespace ObdEmulator
         static void setChecksum(
             std::array<uint8_t, cFixedFrameSize> &data);
 
+        static std::array<uint8_t, cFixedFrameSize> getConfigurationArray(
+            CanBusSpeed speed, bool supportExtended);
+
     public:
+        /// @brief Constructor
+        /// @param speed CAN bus communication speed
+        /// @param supportExtended Indicates whether extended frame is supported or not
+        CanDriver(CanBusSpeed speed, bool supportExtended);
         CanDriver() = delete;
 
         /// @brief Get CAN bus communication configuration packet
-        /// @param speed CAN bus communication speed
-        /// @param supportExtended Indicates whether extended frame is supported or not
-        /// @returns Configuration packet byte array
-        static std::array<uint8_t, cFixedFrameSize> GetConfiguration(
-            CanBusSpeed speed, bool supportExtended);
+        /// @returns Configuration packet byte vector
+        std::vector<uint8_t> GetConfiguration() const;
 
         /// @brief Serialize a CAN frame to a variable length byte array
         /// @param frame Frame to be serialized
         /// @returns Serialized frame byte array
-        static std::vector<uint8_t> Serialize(
-            const CanFrame &frame);
+        /// @throws std::invalid_argument Throws if the input frame is invalid
+        std::vector<uint8_t> Serialize(const CanFrame &frame) const;
 
         /// @brief Deserialize a packet to a CAN frame
         /// @param packet Packet data array to be deserialized
         /// @returns Derserialized CAN frame
-        /// @throws std::invalid_argument Throws if the data array is invalid
-        static CanFrame Deserialize(const std::vector<uint8_t> &packet);
+        /// @throws std::invalid_argument Throws if the input packet is invalid
+        CanFrame Deserialize(const std::vector<uint8_t> &packet) const;
     };
 }
 

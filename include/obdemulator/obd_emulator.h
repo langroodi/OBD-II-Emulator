@@ -3,6 +3,7 @@
 
 #include <map>
 #include "./communication_layer.h"
+#include "./can_driver.h"
 #include "./obd_service.h"
 
 namespace ObdEmulator
@@ -12,6 +13,7 @@ namespace ObdEmulator
     {
     private:
         CommunicationLayer *mCommunicationLayer;
+        const CanDriver *mCanDriver;
         std::map<uint8_t, ObdService *> mObdServices;
 
         bool processQuery(
@@ -21,9 +23,11 @@ namespace ObdEmulator
     public:
         /// @brief Constructor
         /// @param communicationLayer CAN communication medium abstraction layer
+        /// @param canDriver CAN USB to serial communication driver
         /// @param obdServices Supported OBD-II services during the emulation
         ObdEmulator(
             CommunicationLayer *communicationLayer,
+            const CanDriver *canDriver,
             std::initializer_list<ObdService *> obdServices);
         ~ObdEmulator();
 

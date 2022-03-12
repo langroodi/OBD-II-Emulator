@@ -1,11 +1,12 @@
 #include "../include/obdemulator/obd_emulator.h"
-#include "../include/obdemulator/can_driver.h"
 
 namespace ObdEmulator
 {
     ObdEmulator::ObdEmulator(
         CommunicationLayer *communicationLayer,
-        std::initializer_list<ObdService *> obdServices) : mCommunicationLayer{communicationLayer}
+        const CanDriver *canDriver,
+        std::initializer_list<ObdService *> obdServices) : mCommunicationLayer{communicationLayer},
+                                                           mCanDriver{canDriver}
     {
         for (auto service : obdServices)
         {
@@ -30,7 +31,7 @@ namespace ObdEmulator
         bool _result;
         try
         {
-            CanFrame _queryFrame{CanDriver::Deserialize(query)};
+            CanFrame _queryFrame{mCanDriver->Deserialize(query)};
 
             uint8_t _numberOfAdditionalData{
                 _queryFrame.GetData()[cAdditionalDataSizeIndex]};
@@ -81,7 +82,7 @@ namespace ObdEmulator
             CanFrame _responseFrame(
                 cResponseCanId, cSupportExtendedId, cSupportRtr, _serviceResponseData);
 
-            response = CanDriver::Serialize(_responseFrame);
+            response = mCanDriver->Serialize(_responseFrame);
         }
         catch (const std::invalid_argument &ex)
         {

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "./current_data_obd_service.h"
+#include "../include/obdemulator/can_driver.h"
 #include "../include/obdemulator/obd_emulator.h"
 #include "../include/obdemulator/serial_communication.h"
 
@@ -7,10 +8,14 @@ int main()
 {
     const std::string cSerialPort{"/dev/ttyUSB0"};
     const speed_t cBaudrate{115200};
+    const bool cSupportExtended{false};
+    const ObdEmulator::CanBusSpeed cSpeed{ObdEmulator::CanBusSpeed::Speed250kbps};
 
     ObdEmulator::SerialCommunication serialCommunication(cSerialPort, cBaudrate);
+    ObdEmulator::CanDriver canDriver(cSpeed, cSupportExtended);
     ObdEmulator::CurrentDataObdService currentDataObdService;
-    ObdEmulator::ObdEmulator obdEmulator(&serialCommunication, {&currentDataObdService});
+    ObdEmulator::ObdEmulator obdEmulator(
+        &serialCommunication, &canDriver, {&currentDataObdService});
 
     bool _succeed{obdEmulator.TryStart()};
     if (_succeed)

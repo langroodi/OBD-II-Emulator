@@ -93,7 +93,7 @@ namespace ObdEmulator
         data[CanDriver::cFixedFrameSize - cChecksumEndOffset] = _checksum;
     }
 
-    std::array<uint8_t, CanDriver::cFixedFrameSize> CanDriver::GetConfiguration(
+    std::array<uint8_t, CanDriver::cFixedFrameSize> CanDriver::getConfigurationArray(
         CanBusSpeed speed, bool supportExtended)
     {
         const uint8_t cConfigByte{0x12};
@@ -124,9 +124,27 @@ namespace ObdEmulator
         return _result;
     }
 
-    std::vector<uint8_t> CanDriver::Serialize(
-        const CanFrame &frame)
+    CanDriver::CanDriver(
+        CanBusSpeed speed, bool supportExtended) : mSupportExtended{supportExtended}
     {
+        mConfiguration = getConfigurationArray(speed, supportExtended);
+    }
+
+    std::vector<uint8_t> CanDriver::GetConfiguration() const
+    {
+        std::vector<uint8_t> _result(CanDriver::cFixedFrameSize);
+        std::copy(mConfiguration.cbegin(), mConfiguration.cend(), _result.begin());
+
+        return _result;
+    }
+
+    std::vector<uint8_t> CanDriver::Serialize(const CanFrame &frame) const
+    {
+        if (!mSupportExtended && frame.IsExtended())
+        {
+            throw std::invalid_argument("Extended CAN ID is not supported.");
+        }
+
         std::vector<uint8_t> _result;
         // Packet header segment
         _result.push_back(cHeaderByte);
@@ -181,7 +199,7 @@ namespace ObdEmulator
         return _result;
     }
 
-    CanFrame CanDriver::Deserialize(const std::vector<uint8_t> &packet)
+    CanFrame CanDriver::Deserialize(const std::vector<uint8_t> &packet) const
     {
         const uint8_t cDlcMask{0x0F};
         int _pointer{-1};
@@ -204,6 +222,10 @@ namespace ObdEmulator
         // Packet type segment
         uint8_t _typeByte = packet.at(++_pointer);
         bool _extended{static_cast<bool>(_typeByte & cExtendedBitMask)};
+        if (!mSupportExtended && _extended)
+        {
+            throw std::invalid_argument("Extended CAN ID is not supported.");
+        }
         bool _remote{static_cast<bool>(_typeByte & cRemoteBitMask)};
         size_t _dlc{static_cast<size_t>(_typeByte & cDlcMask)};
 
