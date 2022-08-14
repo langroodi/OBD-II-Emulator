@@ -44,7 +44,7 @@ The current library has two categories of dependency as follows:
 - Compiler:
     - GCC C/C++ Compiler (x86-64 Linux GNU): 11.2.0; or
     - Clang C/C++ Compiler (x86-64 PC Linux GNU): 14.0.0
-- Google Test: v1.11.0
+- Google Test: v1.12.1
 - Linux kernel minimum version: 2.6.25
 
 ## Documentation
