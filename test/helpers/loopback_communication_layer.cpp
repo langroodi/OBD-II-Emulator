@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include <obdemulator/can_driver.h>
 #include "./loopback_communication_layer.h"
 

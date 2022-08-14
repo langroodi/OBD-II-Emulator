@@ -1,3 +1,4 @@
+#include <cstddef>
 #include "./dummy_obd_service.h"
 
 namespace ObdEmulator

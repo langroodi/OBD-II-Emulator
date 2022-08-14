@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <array>
 #include <vector>
+#include <cstddef>
 
 namespace ObdEmulator
 {
@@ -42,7 +43,7 @@ namespace ObdEmulator
         /// @brief Get frame CAN ID
         /// @returns 11-bit ID if the frame is standard and 20-bit ID if it is extended
         /// @see IsExtended
-        u_int32_t GetId() const noexcept;
+        uint32_t GetId() const noexcept;
 
         /// @brief Indicate whether the frame is extended or standard
         /// @returns True if the frame is extended, otherwise false

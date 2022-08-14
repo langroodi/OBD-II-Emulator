@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "../include/obdemulator/obd_emulator.h"
 
 namespace ObdEmulator
