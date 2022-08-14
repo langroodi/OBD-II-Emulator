@@ -8,11 +8,11 @@ project(OBD_II_Emulator)
 set(CMAKE_CXX_STANDARD 14)
 # Enable 'rdyamic' switch to export the executable's symbols for debugging
 set(CMAKE_ENABLE_EXPORTS 1)
-# Fetching GoogleTest 1.11.0 for unit testing
+# Fetching GoogleTest 1.12.1 for unit testing
 include(FetchContent)
 FetchContent_Declare(
   googletest
-  URL https://github.com/google/googletest/archive/8d51ffdfab10b3fba636ae69bc03da4b54f8c235.zip
+  URL https://github.com/google/googletest/archive/58d77fa8070e8cec2dc1ed015d66b454c8d78850.zip
 )
 
 FetchContent_MakeAvailable(googletest)
