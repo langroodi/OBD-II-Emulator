@@ -1,0 +1,16 @@
+CanFrameTest.IdProperty 1 0.00230434
+CanFrameTest.ExtendedProperty 1 0.00204983
+CanFrameTest.RemoteProperty 1 0.00179293
+CanFrameTest.DataLengthProperty 1 0.00169643
+CanFrameTest.DataProperty 1 0.00164103
+CanDriverTest.GetConfigurationMethod 1 0.00164233
+CanDriverTest.StandardSerializeMethod 1 0.00167963
+CanDriverTest.ExtendedSerializeMethod 1 0.00165013
+CanDriverTest.StandardDeserializeMethod 1 0.00165763
+CanDriverTest.ExtendedDeserializeMethod 1 0.00164643
+ObdServiceTest.GetServiceMethod 1 0.00168143
+CommunicationLayerTest.Constructor 1 0.00157933
+CommunicationLayerTest.SetCallbackMethod 1 0.00168733
+CommunicationLayerTest.ResetCallbackMethod 1 0.00160453
+ObdEmulatorTest.LoopbackScenario 1 0.00164533
+---
