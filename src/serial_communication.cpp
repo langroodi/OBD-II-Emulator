@@ -120,13 +120,16 @@ namespace ObdEmulator
         }
         else
         {
-            std::vector<uint8_t> _response;
-            bool _handled{Callback(std::move(_readBuffer), _response)};
-
-            // If the query is handled, queue its response for sending
-            if (_handled)
+            if (Callback)
             {
-                mSendBuffer.push(std::move(_response));
+                std::vector<uint8_t> _response;
+                bool _handled{Callback(std::move(_readBuffer), _response)};
+
+                // If the query is handled, queue its response for sending
+                if (_handled)
+                {
+                    mSendBuffer.push(std::move(_response));
+                }
             }
 
             // Regardless of whether the query was handled or not in this case,
