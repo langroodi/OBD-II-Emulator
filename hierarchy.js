@@ -6,5 +6,6 @@ var hierarchy =
       [ "ObdEmulator::SerialCommunication", "classObdEmulator_1_1SerialCommunication.html", null ]
     ] ],
     [ "ObdEmulator::ObdEmulator", "classObdEmulator_1_1ObdEmulator.html", null ],
-    [ "ObdEmulator::ObdService", "classObdEmulator_1_1ObdService.html", null ]
+    [ "ObdEmulator::ObdService", "classObdEmulator_1_1ObdService.html", null ],
+    [ "ObdEmulator::PacketBuffer", "classObdEmulator_1_1PacketBuffer.html", null ]
 ];

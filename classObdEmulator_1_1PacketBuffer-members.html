@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OBD-II Emulator: Class Hierarchy</title>
+<title>OBD-II Emulator: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",'Search','.html');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('hierarchy.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('classObdEmulator_1_1PacketBuffer.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -101,21 +101,19 @@ $(document).ready(function(){initNavTree('hierarchy.html',''); initResizable(); 
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Class Hierarchy</div></div>
+  <div class="headertitle"><div class="title">ObdEmulator::PacketBuffer Member List</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">This inheritance list is sorted roughly, but not completely, alphabetically:</div><div class="directory">
-<div class="levels">[detail level <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span>]</div><table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classObdEmulator_1_1CanDriver.html" target="_self">ObdEmulator::CanDriver</a></td><td class="desc">CAN bus controller driver helper </td></tr>
-<tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classObdEmulator_1_1CanFrame.html" target="_self">ObdEmulator::CanFrame</a></td><td class="desc">CAN transmission packet frame </td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_2_" class="arrow" onclick="toggleFolder('2_')">&#9660;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classObdEmulator_1_1CommunicationLayer.html" target="_self">ObdEmulator::CommunicationLayer</a></td><td class="desc">Communication medium abstraction layer to send and receive data </td></tr>
-<tr id="row_2_0_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classObdEmulator_1_1SerialCommunication.html" target="_self">ObdEmulator::SerialCommunication</a></td><td class="desc">Serial port communication layer </td></tr>
-<tr id="row_3_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classObdEmulator_1_1ObdEmulator.html" target="_self">ObdEmulator::ObdEmulator</a></td><td class="desc">A class that routes OBD queries to their corresponding services </td></tr>
-<tr id="row_4_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classObdEmulator_1_1ObdService.html" target="_self">ObdEmulator::ObdService</a></td><td class="desc">A class that defines an OBD-II service based on SAE J1979 standard </td></tr>
-<tr id="row_5_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classObdEmulator_1_1PacketBuffer.html" target="_self">ObdEmulator::PacketBuffer</a></td><td class="desc">Thread-safe queue for buffering packet data bytes </td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+
+<p>This is the complete list of members for <a class="el" href="classObdEmulator_1_1PacketBuffer.html">ObdEmulator::PacketBuffer</a>, including all inherited members.</p>
+<table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classObdEmulator_1_1PacketBuffer.html#a700998de2728e73c82416fcbc2cd98bd">Empty</a>() const noexcept</td><td class="entry"><a class="el" href="classObdEmulator_1_1PacketBuffer.html">ObdEmulator::PacketBuffer</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>PacketBuffer</b>() (defined in <a class="el" href="classObdEmulator_1_1PacketBuffer.html">ObdEmulator::PacketBuffer</a>)</td><td class="entry"><a class="el" href="classObdEmulator_1_1PacketBuffer.html">ObdEmulator::PacketBuffer</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classObdEmulator_1_1PacketBuffer.html#a2ed73be64a7fd05ccde34e59b2eb6d12">TryClear</a>()</td><td class="entry"><a class="el" href="classObdEmulator_1_1PacketBuffer.html">ObdEmulator::PacketBuffer</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classObdEmulator_1_1PacketBuffer.html#a0f1565733d4dc3eedd9aa4acbbd328c6">TryDequeue</a>(std::vector&lt; uint8_t &gt; &amp;packet)</td><td class="entry"><a class="el" href="classObdEmulator_1_1PacketBuffer.html">ObdEmulator::PacketBuffer</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classObdEmulator_1_1PacketBuffer.html#ac7ebcdec97aff74757c217bccdb8cb58">TryEnqueue</a>(std::vector&lt; uint8_t &gt; &amp;&amp;packet)</td><td class="entry"><a class="el" href="classObdEmulator_1_1PacketBuffer.html">ObdEmulator::PacketBuffer</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>~PacketBuffer</b>()=default (defined in <a class="el" href="classObdEmulator_1_1PacketBuffer.html">ObdEmulator::PacketBuffer</a>)</td><td class="entry"><a class="el" href="classObdEmulator_1_1PacketBuffer.html">ObdEmulator::PacketBuffer</a></td><td class="entry"></td></tr>
+</table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
