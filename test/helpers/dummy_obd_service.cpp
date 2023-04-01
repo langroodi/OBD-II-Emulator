@@ -14,7 +14,8 @@ namespace ObdEmulator
         }
 
         bool DummyObdService::TryGetResponse(
-            const std::vector<uint8_t> &pid, std::vector<uint8_t> &response)
+            const std::vector<uint8_t> &pid,
+            std::vector<uint8_t> &response) const
         {
             const size_t cPidIndex{0};
             uint8_t _queriedPid{pid.at(cPidIndex)};
@@ -22,6 +23,26 @@ namespace ObdEmulator
             if (_queriedPid == cVehicleSpeedPid)
             {
                 response = {cVehicleSpeed};
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool DummyObdService::TryGetResponseAsync(
+            const std::vector<uint8_t> &pid,
+            std::function<void(std::vector<uint8_t> &&)> &&callback)
+        {
+            const size_t cPidIndex{0};
+            uint8_t _queriedPid{pid.at(cPidIndex)};
+
+            if (_queriedPid == cVehicleSpeedPid)
+            {
+                std::vector<uint8_t> _response{cVehicleSpeed};
+                callback(std::move(_response));
+                
                 return true;
             }
             else

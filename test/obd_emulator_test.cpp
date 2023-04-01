@@ -28,20 +28,12 @@ namespace ObdEmulator
                             mObdEmulator(&mCommunicationLayer, &mCanDriver, {&mObdService})
         {
         }
-
-        void SetUp() override
-        {
-            mObdEmulator.TryStart();
-        }
-
-        void TearDown() override
-        {
-            mObdEmulator.TryStop();
-        }
     };
 
     TEST_F(ObdEmulatorTest, LoopbackScenario)
     {
+        EXPECT_TRUE(mObdEmulator.TryStart());
+
         CanFrame _query(
             cQueryBroadcastId,
             cIsExtended,
@@ -57,5 +49,33 @@ namespace ObdEmulator
 
         uint8_t _actualSpeed{_response.GetData().at(cResponseDataIndex)};
         EXPECT_EQ(_actualSpeed, Helpers::DummyObdService::cVehicleSpeed);
+
+        EXPECT_TRUE(mObdEmulator.TryStop());
+    }
+
+    TEST_F(ObdEmulatorTest, AsyncLoopbackScenario)
+    {
+        EXPECT_TRUE(mObdEmulator.TryStartAsync());
+
+        CanFrame _query(
+            cQueryBroadcastId,
+            cIsExtended,
+            cIsRtr,
+            {cQuerySize, Helpers::DummyObdService::cService, Helpers::DummyObdService::cVehicleSpeedPid});
+
+        mCommunicationLayer.SendAsync(_query);
+
+        const CanFrame *_response;
+        EXPECT_TRUE(mCommunicationLayer.TryGetLastReceivedCanFrame(_response));
+
+        uint8_t _actualService{_response->GetData().at(cResponseServiceIndex)};
+        int _expectedServiceInt{Helpers::DummyObdService::cService + cResponseServiceOfsset};
+        auto _expectedService{static_cast<uint8_t>(_expectedServiceInt)};
+        EXPECT_EQ(_actualService, _expectedService);
+
+        uint8_t _actualSpeed{_response->GetData().at(cResponseDataIndex)};
+        EXPECT_EQ(_actualSpeed, Helpers::DummyObdService::cVehicleSpeed);
+
+        EXPECT_TRUE(mObdEmulator.TryStop());
     }
 }

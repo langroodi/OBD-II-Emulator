@@ -7,12 +7,23 @@ namespace ObdEmulator
     namespace Helpers
     {
         LoopbackCommunicationLayer::LoopbackCommunicationLayer(
-            const CanDriver *canDriver) noexcept : mCanDriver(canDriver)
+            const CanDriver *canDriver) noexcept : mCanDriver(canDriver),
+                                                   mCanFrame{nullptr}
         {
         }
 
         bool LoopbackCommunicationLayer::TryStart(std::vector<uint8_t> &&configuration)
         {
+            return true;
+        }
+
+        bool LoopbackCommunicationLayer::TrySendAsync(std::vector<uint8_t> &&data)
+        {
+            if (mCanFrame)
+            {
+                delete mCanFrame;
+            }
+            mCanFrame = new CanFrame{mCanDriver->Deserialize(data)};
             return true;
         }
 
@@ -32,6 +43,28 @@ namespace ObdEmulator
             }
         }
 
+        void LoopbackCommunicationLayer::SendAsync(const CanFrame &queryFrame)
+        {
+            std::vector<uint8_t> _queryData{mCanDriver->Serialize(queryFrame)};
+            std::vector<uint8_t> _responseData;
+
+            AsyncCallback(std::move(_queryData));
+        }
+
+        bool LoopbackCommunicationLayer::TryGetLastReceivedCanFrame(
+            const CanFrame *&receivedCanFrame) const noexcept
+        {
+            if (mCanFrame)
+            {
+                receivedCanFrame = mCanFrame;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         bool LoopbackCommunicationLayer::TryStop()
         {
             return true;
@@ -40,6 +73,11 @@ namespace ObdEmulator
         LoopbackCommunicationLayer::~LoopbackCommunicationLayer()
         {
             TryStop();
+
+            if (mCanFrame)
+            {
+                delete mCanFrame;
+            }
         }
     }
 }
