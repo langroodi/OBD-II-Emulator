@@ -16,20 +16,15 @@ namespace ObdEmulator
         }
     }
 
-    bool ObdEmulator::processQuery(
+    bool ObdEmulator::tryParseQuery(
         std::vector<uint8_t> &&query,
-        std::vector<uint8_t> &response)
+        std::vector<uint8_t> &pid,
+        uint8_t &queriedService) const
     {
         const size_t cAdditionalDataSizeIndex{0};
         const size_t cServiceIndex{1};
         const size_t cPidIndex{2};
-        const uint8_t cResponseServiceOffset{0x40};
-        const uint8_t cResponseNotUsedByte{0x55};
-        const uint32_t cResponseCanId{0x000007e8};
-        const bool cSupportExtendedId{false};
-        const bool cSupportRtr{false};
 
-        bool _result;
         try
         {
             CanFrame _queryFrame{mCanDriver->Deserialize(query)};
@@ -41,66 +36,147 @@ namespace ObdEmulator
 
             if (_additionalDataSize > _queryFrame.GetDataLength())
             {
-                throw std::out_of_range("The data segment is corrupted.");
+                return false;
             }
-
-            // Search in the registered OBD services
-            uint8_t _queriedService{_queryFrame.GetData()[cServiceIndex]};
-            ObdService *_obdService{mObdServices.at(_queriedService)};
 
             // Extract PID data array
             size_t _pidLength{_additionalDataSize - 1};
-            std::vector<uint8_t> _pid(_pidLength);
+            pid = std::vector<uint8_t>(_pidLength);
             std::copy(
                 _queryFrame.GetData().cbegin() + cPidIndex,
                 _queryFrame.GetData().cbegin() + cPidIndex + _pidLength,
-                _pid.begin());
+                pid.begin());
+
+            // Search in the registered OBD services
+            queriedService = _queryFrame.GetData()[cServiceIndex];
+        }
+        catch (std::invalid_argument)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    void ObdEmulator::generateResponse(
+        const std::vector<uint8_t> &pid,
+        std::vector<uint8_t> &&serviceResponseData,
+        uint8_t queriedService,
+        std::vector<uint8_t> &response) const
+    {
+        const uint8_t cResponseServiceOffset{0x40};
+        const uint8_t cResponseNotUsedByte{0x55};
+        const uint32_t cResponseCanId{0x000007e8};
+        const bool cSupportExtendedId{false};
+        const bool cSupportRtr{false};
+
+        // Insert the queried PID at the beginning of the response
+        serviceResponseData.insert(
+            serviceResponseData.begin(),
+            pid.begin(),
+            pid.end());
+
+        // Insert the response service byte at the beginning
+        int _responseServiceInt{queriedService + cResponseServiceOffset};
+        auto _responseService{static_cast<uint8_t>(_responseServiceInt)};
+        serviceResponseData.insert(
+            serviceResponseData.begin(),
+            _responseService);
+
+        // Insert the response additional data size at the beginning
+        size_t _responseAdditionalDataSize{serviceResponseData.size()};
+        auto _numberOfResponseAdditionalData{
+            static_cast<uint8_t>(_responseAdditionalDataSize)};
+        serviceResponseData.insert(
+            serviceResponseData.begin(),
+            _numberOfResponseAdditionalData);
+
+        // Fill the rest of the not used data array with a const value based on ISO 15765-2
+        for (size_t i = _responseAdditionalDataSize + 1; i < CanFrame::cDataLengthMax; ++i)
+        {
+            serviceResponseData.push_back(cResponseNotUsedByte);
+        }
+
+        CanFrame _responseFrame(
+            cResponseCanId, cSupportExtendedId, cSupportRtr, serviceResponseData);
+
+        response = mCanDriver->Serialize(_responseFrame);
+    }
+
+    bool ObdEmulator::processQuery(
+        std::vector<uint8_t> &&query,
+        std::vector<uint8_t> &response) const
+    {
+        std::vector<uint8_t> _pid;
+        uint8_t _queriedService;
+        bool _successful = tryParseQuery(std::move(query), _pid, _queriedService);
+
+        if (!_successful)
+        {
+            return false;
+        }
+
+        try
+        {
+            const ObdService *_obdService{mObdServices.at(_queriedService)};
 
             std::vector<uint8_t> _serviceResponseData;
-            _result = _obdService->TryGetResponse(_pid, _serviceResponseData);
+            _successful = _obdService->TryGetResponse(_pid, _serviceResponseData);
 
-            // Insert the queried PID at the beginning of the response
-            _serviceResponseData.insert(
-                _serviceResponseData.begin(),
-                _pid.begin(),
-                _pid.end());
-
-            // Insert the response service byte at the beginning
-            int _responseServiceInt{_queriedService + cResponseServiceOffset};
-            auto _responseService{static_cast<uint8_t>(_responseServiceInt)};
-            _serviceResponseData.insert(
-                _serviceResponseData.begin(),
-                _responseService);
-
-            // Insert the response additional data size at the beginning
-            size_t _responseAdditionalDataSize{_serviceResponseData.size()};
-            auto _numberOfResponseAdditionalData{
-                static_cast<uint8_t>(_responseAdditionalDataSize)};
-            _serviceResponseData.insert(
-                _serviceResponseData.begin(),
-                _numberOfResponseAdditionalData);
-
-            // Fill the rest of the not used data array with a const value based on ISO 15765-2
-            for (size_t i = _responseAdditionalDataSize + 1; i < CanFrame::cDataLengthMax; ++i)
+            if (!_successful)
             {
-                _serviceResponseData.push_back(cResponseNotUsedByte);
+                return false;
             }
 
-            CanFrame _responseFrame(
-                cResponseCanId, cSupportExtendedId, cSupportRtr, _serviceResponseData);
-
-            response = mCanDriver->Serialize(_responseFrame);
+            generateResponse(_pid,
+                             std::move(_serviceResponseData),
+                             _queriedService,
+                             response);
         }
-        catch (const std::invalid_argument &ex)
+        catch (std::out_of_range)
         {
-            _result = false;
-        }
-        catch (const std::out_of_range &ex)
-        {
-            _result = false;
+            return false;
         }
 
-        return _result;
+        return true;
+    }
+
+    void ObdEmulator::sendResponseAsync(
+        std::vector<uint8_t> pid,
+        uint8_t queriedService,
+        std::vector<uint8_t> &&serviceResponseData)
+    {
+        std::vector<uint8_t> _response;
+        generateResponse(pid,
+                         std::move(serviceResponseData),
+                         queriedService,
+                         _response);
+
+        mCommunicationLayer->TrySendAsync(std::move(_response));
+    }
+
+    void ObdEmulator::processQueryAsync(std::vector<uint8_t> &&query)
+    {
+        std::vector<uint8_t> _pid;
+        uint8_t _queriedService;
+        const bool cSuccessful{
+            tryParseQuery(std::move(query), _pid, _queriedService)};
+
+        if (cSuccessful)
+        {
+            try
+            {
+                ObdService *_obdService{mObdServices.at(_queriedService)};
+                auto _asyncCallback{
+                    std::bind(
+                        &ObdEmulator::sendResponseAsync,
+                        this, _pid, _queriedService, std::placeholders::_1)};
+                _obdService->TryGetResponseAsync(_pid, std::move(_asyncCallback));
+            }
+            catch (std::out_of_range)
+            {
+            }
+        }
     }
 
     bool ObdEmulator::TryStart()
@@ -115,7 +191,24 @@ namespace ObdEmulator
                 this,
                 std::placeholders::_1,
                 std::placeholders::_2)};
-            mCommunicationLayer->SetCallback(_callback);
+            mCommunicationLayer->SetCallback(std::move(_callback));
+        }
+
+        return _result;
+    }
+
+    bool ObdEmulator::TryStartAsync()
+    {
+        std::vector<uint8_t> _configuration{mCanDriver->GetConfiguration()};
+        bool _result{mCommunicationLayer->TryStart(std::move(_configuration))};
+
+        if (_result)
+        {
+            auto _asyncCallback{std::bind(
+                &ObdEmulator::processQueryAsync,
+                this,
+                std::placeholders::_1)};
+            mCommunicationLayer->SetCallback(std::move(_asyncCallback));
         }
 
         return _result;

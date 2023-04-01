@@ -16,9 +16,27 @@ namespace ObdEmulator
         const CanDriver *mCanDriver;
         std::map<uint8_t, ObdService *> mObdServices;
 
+        bool tryParseQuery(
+            std::vector<uint8_t> &&query,
+            std::vector<uint8_t> &pid,
+            uint8_t &queriedService) const;
+
+        void generateResponse(
+            const std::vector<uint8_t> &pid,
+            std::vector<uint8_t> &&serviceResponseData,
+            uint8_t queriedService,
+            std::vector<uint8_t> &response) const;
+
         bool processQuery(
             std::vector<uint8_t> &&query,
-            std::vector<uint8_t> &response);
+            std::vector<uint8_t> &response) const;
+
+        void sendResponseAsync(
+            std::vector<uint8_t> pid,
+            uint8_t queriedService,
+            std::vector<uint8_t> &&serviceResponseData);
+
+        void processQueryAsync(std::vector<uint8_t> &&query);
 
     public:
         /// @brief Constructor
@@ -34,6 +52,10 @@ namespace ObdEmulator
         /// @brief Try to start the emulation
         /// @returns True if the emulation start was successful, otherwise false
         bool TryStart();
+
+        /// @brief Try to start the emulation for asynchrous data handling
+        /// @returns True if the emulation start was successful, otherwise false
+        bool TryStartAsync();
 
         /// @brief Try to stop the emulation
         /// @returns True if the emulation stop was successful, otherwise false
