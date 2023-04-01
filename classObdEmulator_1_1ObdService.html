@@ -119,9 +119,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9769a7ef56a96b587ee51ca46a26b999"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#a9769a7ef56a96b587ee51ca46a26b999">GetService</a> () const noexcept</td></tr>
 <tr class="memdesc:a9769a7ef56a96b587ee51ca46a26b999"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the service.  <a href="classObdEmulator_1_1ObdService.html#a9769a7ef56a96b587ee51ca46a26b999">More...</a><br /></td></tr>
 <tr class="separator:a9769a7ef56a96b587ee51ca46a26b999"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae90edbba5ae12091e118d0d2095546b7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#ae90edbba5ae12091e118d0d2095546b7">TryGetResponse</a> (const std::vector&lt; uint8_t &gt; &amp;pid, std::vector&lt; uint8_t &gt; &amp;response)=0</td></tr>
-<tr class="memdesc:ae90edbba5ae12091e118d0d2095546b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to get an emulated response based the queried PID.  <a href="classObdEmulator_1_1ObdService.html#ae90edbba5ae12091e118d0d2095546b7">More...</a><br /></td></tr>
-<tr class="separator:ae90edbba5ae12091e118d0d2095546b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d545bd17a7ef858942eca0856cde160"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#a3d545bd17a7ef858942eca0856cde160">TryGetResponse</a> (const std::vector&lt; uint8_t &gt; &amp;pid, std::vector&lt; uint8_t &gt; &amp;response) const =0</td></tr>
+<tr class="memdesc:a3d545bd17a7ef858942eca0856cde160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to get an emulated response based the queried PID.  <a href="classObdEmulator_1_1ObdService.html#a3d545bd17a7ef858942eca0856cde160">More...</a><br /></td></tr>
+<tr class="separator:a3d545bd17a7ef858942eca0856cde160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8091ce3aa335b9f682982acaa45ca79a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#a8091ce3aa335b9f682982acaa45ca79a">TryGetResponseAsync</a> (const std::vector&lt; uint8_t &gt; &amp;pid, std::function&lt; void(std::vector&lt; uint8_t &gt; &amp;&amp;)&gt; &amp;&amp;callback)=0</td></tr>
+<tr class="memdesc:a8091ce3aa335b9f682982acaa45ca79a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to get an emulated response asynchronously based the queried PID.  <a href="classObdEmulator_1_1ObdService.html#a8091ce3aa335b9f682982acaa45ca79a">More...</a><br /></td></tr>
+<tr class="separator:a8091ce3aa335b9f682982acaa45ca79a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -195,8 +198,8 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae90edbba5ae12091e118d0d2095546b7" name="ae90edbba5ae12091e118d0d2095546b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae90edbba5ae12091e118d0d2095546b7">&#9670;&nbsp;</a></span>TryGetResponse()</h2>
+<a id="a3d545bd17a7ef858942eca0856cde160" name="a3d545bd17a7ef858942eca0856cde160"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d545bd17a7ef858942eca0856cde160">&#9670;&nbsp;</a></span>TryGetResponse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -219,7 +222,7 @@ Protected Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -238,6 +241,53 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True, if the service handled the query successfully, otherwise false </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The function may be called from a different thread than the main thread. </dd></dl>
+
+</div>
+</div>
+<a id="a8091ce3aa335b9f682982acaa45ca79a" name="a8091ce3aa335b9f682982acaa45ca79a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8091ce3aa335b9f682982acaa45ca79a">&#9670;&nbsp;</a></span>TryGetResponseAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool ObdEmulator::ObdService::TryGetResponseAsync </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>pid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void(std::vector&lt; uint8_t &gt; &amp;&amp;)&gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>callback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Try to get an emulated response asynchronously based the queried PID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pid</td><td>Queried PID </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">callback</td><td>Callback to be invoked when the response is ready </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True, if the query is queued successfully for handling, otherwise false </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The function may be called from a different thread than the main thread. </dd></dl>
 
 </div>

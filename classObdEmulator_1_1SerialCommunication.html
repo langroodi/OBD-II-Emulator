@@ -130,15 +130,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af6664ecf455c697cc3d3f65f832034a3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1SerialCommunication.html#af6664ecf455c697cc3d3f65f832034a3">TryStart</a> (std::vector&lt; uint8_t &gt; &amp;&amp;configuration) override</td></tr>
 <tr class="memdesc:af6664ecf455c697cc3d3f65f832034a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to start the communication.  <a href="classObdEmulator_1_1SerialCommunication.html#af6664ecf455c697cc3d3f65f832034a3">More...</a><br /></td></tr>
 <tr class="separator:af6664ecf455c697cc3d3f65f832034a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae785b605be5b974754d9cf9b5981f52e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1SerialCommunication.html#ae785b605be5b974754d9cf9b5981f52e">TrySendAsync</a> (std::vector&lt; uint8_t &gt; &amp;&amp;data) override</td></tr>
+<tr class="memdesc:ae785b605be5b974754d9cf9b5981f52e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to buffer data for sending.  <a href="classObdEmulator_1_1SerialCommunication.html#ae785b605be5b974754d9cf9b5981f52e">More...</a><br /></td></tr>
+<tr class="separator:ae785b605be5b974754d9cf9b5981f52e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d1203f09b7dc68f19a1e56ef8bc5d61"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1SerialCommunication.html#a2d1203f09b7dc68f19a1e56ef8bc5d61">TryStop</a> () override</td></tr>
 <tr class="memdesc:a2d1203f09b7dc68f19a1e56ef8bc5d61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to stop the communication.  <a href="classObdEmulator_1_1SerialCommunication.html#a2d1203f09b7dc68f19a1e56ef8bc5d61">More...</a><br /></td></tr>
 <tr class="separator:a2d1203f09b7dc68f19a1e56ef8bc5d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classObdEmulator_1_1CommunicationLayer"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classObdEmulator_1_1CommunicationLayer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classObdEmulator_1_1CommunicationLayer.html">ObdEmulator::CommunicationLayer</a></td></tr>
 <tr class="memitem:ac203f0028dc798a777d3d4846b152ce5 inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ac203f0028dc798a777d3d4846b152ce5">SetCallback</a> (<a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ada1c3855abb2bbf3aa9e9c6401e9883d">CallbackType</a> &amp;&amp;callback)</td></tr>
-<tr class="memdesc:ac203f0028dc798a777d3d4846b152ce5 inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a data received callaback.  <a href="classObdEmulator_1_1CommunicationLayer.html#ac203f0028dc798a777d3d4846b152ce5">More...</a><br /></td></tr>
+<tr class="memdesc:ac203f0028dc798a777d3d4846b152ce5 inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a data received callback and reset the asynchronized callback.  <a href="classObdEmulator_1_1CommunicationLayer.html#ac203f0028dc798a777d3d4846b152ce5">More...</a><br /></td></tr>
 <tr class="separator:ac203f0028dc798a777d3d4846b152ce5 inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b0b5824d2afbcfa1bdfc83bb6f60376 inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#a1b0b5824d2afbcfa1bdfc83bb6f60376">SetCallback</a> (<a class="el" href="classObdEmulator_1_1CommunicationLayer.html#a0b0247649464d750a91c9ff144639cd2">AsyncCallbackType</a> &amp;&amp;asyncCallback)</td></tr>
+<tr class="memdesc:a1b0b5824d2afbcfa1bdfc83bb6f60376 inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a data received asynchronous callback and reset the synchronized callback.  <a href="classObdEmulator_1_1CommunicationLayer.html#a1b0b5824d2afbcfa1bdfc83bb6f60376">More...</a><br /></td></tr>
+<tr class="separator:a1b0b5824d2afbcfa1bdfc83bb6f60376 inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaff4bf35238bf0168e454cd09729b7e inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#abaff4bf35238bf0168e454cd09729b7e">ResetCallback</a> () noexcept</td></tr>
-<tr class="memdesc:abaff4bf35238bf0168e454cd09729b7e inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the data received callback if it has been already set.  <a href="classObdEmulator_1_1CommunicationLayer.html#abaff4bf35238bf0168e454cd09729b7e">More...</a><br /></td></tr>
+<tr class="memdesc:abaff4bf35238bf0168e454cd09729b7e inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset both data received synchronized and asynchronized callbacks.  <a href="classObdEmulator_1_1CommunicationLayer.html#abaff4bf35238bf0168e454cd09729b7e">More...</a><br /></td></tr>
 <tr class="separator:abaff4bf35238bf0168e454cd09729b7e inherit pub_methods_classObdEmulator_1_1CommunicationLayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -147,11 +153,19 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:ada1c3855abb2bbf3aa9e9c6401e9883d inherit pub_types_classObdEmulator_1_1CommunicationLayer"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ada1c3855abb2bbf3aa9e9c6401e9883d">CallbackType</a> = std::function&lt; bool(std::vector&lt; uint8_t &gt; &amp;&amp;, std::vector&lt; uint8_t &gt; &amp;)&gt;</td></tr>
 <tr class="memdesc:ada1c3855abb2bbf3aa9e9c6401e9883d inherit pub_types_classObdEmulator_1_1CommunicationLayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data received callback type.  <a href="classObdEmulator_1_1CommunicationLayer.html#ada1c3855abb2bbf3aa9e9c6401e9883d">More...</a><br /></td></tr>
 <tr class="separator:ada1c3855abb2bbf3aa9e9c6401e9883d inherit pub_types_classObdEmulator_1_1CommunicationLayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b0247649464d750a91c9ff144639cd2 inherit pub_types_classObdEmulator_1_1CommunicationLayer"><td class="memItemLeft" align="right" valign="top"><a id="a0b0247649464d750a91c9ff144639cd2" name="a0b0247649464d750a91c9ff144639cd2"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>AsyncCallbackType</b> = std::function&lt; void(std::vector&lt; uint8_t &gt; &amp;&amp;)&gt;</td></tr>
+<tr class="memdesc:a0b0247649464d750a91c9ff144639cd2 inherit pub_types_classObdEmulator_1_1CommunicationLayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data received callback type to handle the data asynchronously. <br /></td></tr>
+<tr class="separator:a0b0247649464d750a91c9ff144639cd2 inherit pub_types_classObdEmulator_1_1CommunicationLayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classObdEmulator_1_1CommunicationLayer"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classObdEmulator_1_1CommunicationLayer')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classObdEmulator_1_1CommunicationLayer.html">ObdEmulator::CommunicationLayer</a></td></tr>
 <tr class="memitem:a58e092b6e42ddc4a3786f2b62696955b inherit pro_attribs_classObdEmulator_1_1CommunicationLayer"><td class="memItemLeft" align="right" valign="top"><a id="a58e092b6e42ddc4a3786f2b62696955b" name="a58e092b6e42ddc4a3786f2b62696955b"></a>
 <a class="el" href="classObdEmulator_1_1CommunicationLayer.html#ada1c3855abb2bbf3aa9e9c6401e9883d">CallbackType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Callback</b></td></tr>
 <tr class="memdesc:a58e092b6e42ddc4a3786f2b62696955b inherit pro_attribs_classObdEmulator_1_1CommunicationLayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to be invoked when data received. <br /></td></tr>
 <tr class="separator:a58e092b6e42ddc4a3786f2b62696955b inherit pro_attribs_classObdEmulator_1_1CommunicationLayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b51e6bb02bb6dd1f30e3da10dc009af inherit pro_attribs_classObdEmulator_1_1CommunicationLayer"><td class="memItemLeft" align="right" valign="top"><a id="a5b51e6bb02bb6dd1f30e3da10dc009af" name="a5b51e6bb02bb6dd1f30e3da10dc009af"></a>
+<a class="el" href="classObdEmulator_1_1CommunicationLayer.html#a0b0247649464d750a91c9ff144639cd2">AsyncCallbackType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>AsyncCallback</b></td></tr>
+<tr class="memdesc:a5b51e6bb02bb6dd1f30e3da10dc009af inherit pro_attribs_classObdEmulator_1_1CommunicationLayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to be invoked when data received asynch. <br /></td></tr>
+<tr class="separator:a5b51e6bb02bb6dd1f30e3da10dc009af inherit pro_attribs_classObdEmulator_1_1CommunicationLayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Serial port communication layer. </p>
@@ -207,6 +221,43 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae785b605be5b974754d9cf9b5981f52e" name="ae785b605be5b974754d9cf9b5981f52e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae785b605be5b974754d9cf9b5981f52e">&#9670;&nbsp;</a></span>TrySendAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ObdEmulator::SerialCommunication::TrySendAsync </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; uint8_t &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Try to buffer data for sending. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Data to be buffered for sending </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the data is buffered successfully, otherwise false </dd></dl>
+
+<p>Implements <a class="el" href="classObdEmulator_1_1CommunicationLayer.html#a96962ead675b9855fd8c525d29da292a">ObdEmulator::CommunicationLayer</a>.</p>
+
+</div>
+</div>
 <a id="af6664ecf455c697cc3d3f65f832034a3" name="af6664ecf455c697cc3d3f65f832034a3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af6664ecf455c697cc3d3f65f832034a3">&#9670;&nbsp;</a></span>TryStart()</h2>
 
