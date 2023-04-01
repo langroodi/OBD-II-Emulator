@@ -128,8 +128,12 @@ namespace ObdEmulator
                 // If the query is handled, queue its response for sending
                 if (_handled)
                 {
-                    mSendBuffer.push(std::move(_response));
+                    mSendBuffer.TryEnqueue(std::move(_response));
                 }
+            }
+            else if (AsyncCallback)
+            {
+                AsyncCallback(std::move(_readBuffer));
             }
 
             // Regardless of whether the query was handled or not in this case,
@@ -143,35 +147,29 @@ namespace ObdEmulator
     bool SerialCommunication::trySend()
     {
         int _communicationFd{mFileDescriptors[cCommunicationFdIndex].fd};
-        bool _result{true};
 
         // To avoid starvation, try sending as many as the send buffer queue size is
-        size_t n{mSendBuffer.size()};
-        for (size_t i = 0; i < n; i++)
+        while (!mSendBuffer.Empty())
         {
-            std::vector<uint8_t> _response{mSendBuffer.front()};
-
-            auto _numberOfSentBytes{
-                write(_communicationFd, _response.data(), _response.size())};
-
-            if (_numberOfSentBytes == _response.size())
+            std::vector<uint8_t> _response;
+            if (mSendBuffer.TryDequeue(_response))
             {
-                // Remove the response from queue if it was sent successfully
-                mSendBuffer.pop();
-            }
-            else if (_numberOfSentBytes == cErrorCode)
-            {
-                if ((errno != EAGAIN) && (errno != EWOULDBLOCK) && (errno != EINTR))
+                auto _numberOfSentBytes{
+                    write(_communicationFd, _response.data(), _response.size())};
+
+                if ((_numberOfSentBytes == cErrorCode) &&
+                    (errno != EAGAIN) && (errno != EWOULDBLOCK) && (errno != EINTR))
                 {
                     // In case of the sending failure was NOT because of it would block nor
                     // it was interrupted by a signal, stop the polling loop immediately
-                    _result = false;
-                    break;
+                    return false;
                 }
             }
+
+            std::this_thread::yield();
         }
 
-        return _result;
+        return true;
     }
 
     void SerialCommunication::tryPoll()
@@ -230,27 +228,38 @@ namespace ObdEmulator
     {
         // To start the communication the future should NOT have a valid state
         bool _result{!mFuture.valid()};
-
-        if (_result)
+        if (!_result)
         {
-            int _communictionFd;
-            _result = trySetupCommunication(_communictionFd);
-
-            if (_result)
-            {
-                // Add the created communication file descriptor to the polling array
-                mFileDescriptors[cCommunicationFdIndex].fd = _communictionFd;
-                mFileDescriptors[cCommunicationFdIndex].events = POLLIN | POLLOUT;
-
-                // Enqueue the configuration packet before polling start
-                mSendBuffer.push(std::move(configuration));
-
-                mFuture = mPromise.get_future();
-                mPollingThread = std::thread(&SerialCommunication::tryPoll, this);
-            }
+            return false;
         }
 
-        return _result;
+        int _communictionFd;
+        _result = trySetupCommunication(_communictionFd);
+        if (!_result)
+        {
+            return false;
+        }
+
+        // Add the created communication file descriptor to the polling array
+        mFileDescriptors[cCommunicationFdIndex].fd = _communictionFd;
+        mFileDescriptors[cCommunicationFdIndex].events = POLLIN | POLLOUT;
+
+        // Enqueue the configuration packet before polling start
+        _result = mSendBuffer.TryEnqueue(std::move(configuration));
+        if (!_result)
+        {
+            return false;
+        }
+
+        mFuture = mPromise.get_future();
+        mPollingThread = std::thread(&SerialCommunication::tryPoll, this);
+
+        return true;
+    }
+
+    bool SerialCommunication::TrySendAsync(std::vector<uint8_t> &&data)
+    {
+        return mSendBuffer.TryEnqueue(std::move(data));
     }
 
     bool SerialCommunication::TryStop()
@@ -275,8 +284,7 @@ namespace ObdEmulator
                 }
 
                 // Regardless of the polling loop graceful stopping success, clear the send buffer
-                std::queue<std::vector<uint8_t>> _emptyQueue;
-                std::swap(mSendBuffer, _emptyQueue);
+                _result &= mSendBuffer.TryClear();
 
                 // Regardless of the polling loop graceful stopping success, close the communication
                 int _communicationFd{mFileDescriptors[cCommunicationFdIndex].fd};

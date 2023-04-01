@@ -7,6 +7,7 @@
 #include <future>
 #include <asm/termbits.h>
 #include "./communication_layer.h"
+#include "./packet_buffer.h"
 
 namespace ObdEmulator
 {
@@ -26,7 +27,7 @@ namespace ObdEmulator
         const int mTimeout;
 
         struct pollfd mFileDescriptors[cNumberOfFileDescriptors];
-        std::queue<std::vector<uint8_t>> mSendBuffer;
+        PacketBuffer mSendBuffer;
         std::promise<bool> mPromise;
         std::future<bool> mFuture;
         std::thread mPollingThread;
@@ -48,6 +49,8 @@ namespace ObdEmulator
         ~SerialCommunication();
 
         bool TryStart(std::vector<uint8_t> &&configuration) override;
+
+        bool TrySendAsync(std::vector<uint8_t> &&data) override;
 
         bool TryStop() override;
     };
