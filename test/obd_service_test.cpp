@@ -14,7 +14,15 @@ namespace ObdEmulator
 
     public:
         bool TryGetResponse(
-            const std::vector<uint8_t> &query, std::vector<uint8_t>& response) override
+            const std::vector<uint8_t> &query,
+            std::vector<uint8_t> &response) const override
+        {
+            return false;
+        }
+
+        bool TryGetResponseAsync(
+            const std::vector<uint8_t> &pid,
+            std::function<void(std::vector<uint8_t> &&)> &&callback) override
         {
             return false;
         }
