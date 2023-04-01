@@ -10,9 +10,10 @@ namespace ObdEmulator
     }
 
     bool CurrentDataObdService::TryGetResponse(
-        const std::vector<uint8_t> &pid, std::vector<uint8_t> &response)
+        const std::vector<uint8_t> &pid,
+        std::vector<uint8_t> &response) const
     {
-        const size_t cPidIndex{0};
+        const std::size_t cPidIndex{0};
         bool _result{true};
         uint8_t _queriedPid{pid.at(cPidIndex)};
 
@@ -247,5 +248,13 @@ namespace ObdEmulator
         }
 
         return _result;
+    }
+
+    bool CurrentDataObdService::TryGetResponseAsync(
+        const std::vector<uint8_t> &pid,
+        std::function<void(std::vector<uint8_t> &&)> &&callback)
+    {
+        // Async data handling is not supported.
+        return false;
     }
 }

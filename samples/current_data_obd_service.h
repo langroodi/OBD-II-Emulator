@@ -16,7 +16,12 @@ namespace ObdEmulator
         CurrentDataObdService() noexcept;
 
         bool TryGetResponse(
-            const std::vector<uint8_t> &pid, std::vector<uint8_t> &response) override;
+            const std::vector<uint8_t> &pid,
+            std::vector<uint8_t> &response) const override;
+
+        bool TryGetResponseAsync(
+            const std::vector<uint8_t> &pid,
+            std::function<void(std::vector<uint8_t> &&)> &&callback) override;
     };
 }
 
