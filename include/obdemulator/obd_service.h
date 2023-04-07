@@ -13,17 +13,27 @@ namespace ObdEmulator
     private:
         const uint8_t mService;
 
+    public:
+        /// @brief Response ready callback type
+        using CallbackType = std::function<void(const std::vector<uint8_t> &, std::vector<uint8_t> &&, uint8_t)>;
+
     protected:
         /// @brief Constructor
         /// @param service OBD-II service (mode)
         ObdService(uint8_t service) noexcept;
 
+        CallbackType Callback;
+
     public:
-        virtual ~ObdService() noexcept = default;
+        virtual ~ObdService() noexcept;
 
         /// @brief Get the service
         /// @returns OBD service number
         uint8_t GetService() const noexcept;
+
+        /// @brief Set the response ready callback
+        /// @param callback Callback to be invoked when the response is ready
+        void SetCallback(CallbackType &&callback);
 
         /// @brief Try to get an emulated response based the queried PID
         /// @param[in] pid Queried PID
@@ -35,13 +45,14 @@ namespace ObdEmulator
             std::vector<uint8_t> &response) const = 0;
 
         /// @brief Try to get an emulated response asynchronously based the queried PID
-        /// @param[in] pid Queried PID
-        /// @param[out] callback Callback to be invoked when the response is ready
+        /// @param pid Queried PID
         /// @returns True, if the query is queued successfully for handling, otherwise false
         /// @note The function may be called from a different thread than the main thread.
         virtual bool TryGetResponseAsync(
-            const std::vector<uint8_t> &pid,
-            std::function<void(std::vector<uint8_t> &&)> &&callback) = 0;
+            const std::vector<uint8_t> &pid) = 0;
+
+        /// @brief Reset the response ready callback
+        void ResetCallback() noexcept;
     };
 }
 

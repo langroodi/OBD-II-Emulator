@@ -32,9 +32,9 @@ namespace ObdEmulator
             std::vector<uint8_t> &response) const;
 
         void sendResponseAsync(
-            std::vector<uint8_t> pid,
-            uint8_t queriedService,
-            std::vector<uint8_t> &&serviceResponseData);
+            const std::vector<uint8_t> &pid,
+            std::vector<uint8_t> &&serviceResponseData,
+            uint8_t queriedService);
 
         void processQueryAsync(std::vector<uint8_t> &&query);
 

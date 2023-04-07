@@ -54,6 +54,10 @@ namespace ObdEmulator
         {
             return false;
         }
+        catch (std::out_of_range)
+        {
+            return false;
+        }
 
         return true;
     }
@@ -142,9 +146,9 @@ namespace ObdEmulator
     }
 
     void ObdEmulator::sendResponseAsync(
-        std::vector<uint8_t> pid,
-        uint8_t queriedService,
-        std::vector<uint8_t> &&serviceResponseData)
+        const std::vector<uint8_t> &pid,
+        std::vector<uint8_t> &&serviceResponseData,
+        uint8_t queriedService)
     {
         std::vector<uint8_t> _response;
         generateResponse(pid,
@@ -167,11 +171,7 @@ namespace ObdEmulator
             try
             {
                 ObdService *_obdService{mObdServices.at(_queriedService)};
-                auto _asyncCallback{
-                    std::bind(
-                        &ObdEmulator::sendResponseAsync,
-                        this, _pid, _queriedService, std::placeholders::_1)};
-                _obdService->TryGetResponseAsync(_pid, std::move(_asyncCallback));
+                _obdService->TryGetResponseAsync(_pid);
             }
             catch (std::out_of_range)
             {
@@ -209,6 +209,19 @@ namespace ObdEmulator
                 this,
                 std::placeholders::_1)};
             mCommunicationLayer->SetCallback(std::move(_asyncCallback));
+
+            for (auto obdService : mObdServices)
+            {
+                auto _sendResponseCallback{
+                    std::bind(
+                        &ObdEmulator::sendResponseAsync,
+                        this,
+                        std::placeholders::_1,
+                        std::placeholders::_2,
+                        std::placeholders::_3)};
+
+                obdService.second->SetCallback(std::move(_sendResponseCallback));
+            }
         }
 
         return _result;
