@@ -102,8 +102,10 @@ $(document).ready(function(){initNavTree('classObdEmulator_1_1ObdService.html','
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classObdEmulator_1_1ObdService-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">ObdEmulator::ObdService Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
@@ -114,23 +116,43 @@ $(document).ready(function(){initNavTree('classObdEmulator_1_1ObdService.html','
 
 <p><code>#include &lt;<a class="el" href="obd__service_8h_source.html">obd_service.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ab08e27137e1bf121e73dfcffed4e8092"><td class="memItemLeft" align="right" valign="top"><a id="ab08e27137e1bf121e73dfcffed4e8092" name="ab08e27137e1bf121e73dfcffed4e8092"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>CallbackType</b> = std::function&lt; void(const std::vector&lt; uint8_t &gt; &amp;, std::vector&lt; uint8_t &gt; &amp;&amp;, uint8_t)&gt;</td></tr>
+<tr class="memdesc:ab08e27137e1bf121e73dfcffed4e8092"><td class="mdescLeft">&#160;</td><td class="mdescRight">Response ready callback type. <br /></td></tr>
+<tr class="separator:ab08e27137e1bf121e73dfcffed4e8092"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9769a7ef56a96b587ee51ca46a26b999"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#a9769a7ef56a96b587ee51ca46a26b999">GetService</a> () const noexcept</td></tr>
 <tr class="memdesc:a9769a7ef56a96b587ee51ca46a26b999"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the service.  <a href="classObdEmulator_1_1ObdService.html#a9769a7ef56a96b587ee51ca46a26b999">More...</a><br /></td></tr>
 <tr class="separator:a9769a7ef56a96b587ee51ca46a26b999"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6800c2c822d2786d6d3865eecc0300d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#a6800c2c822d2786d6d3865eecc0300d8">SetCallback</a> (<a class="el" href="classObdEmulator_1_1ObdService.html#ab08e27137e1bf121e73dfcffed4e8092">CallbackType</a> &amp;&amp;callback)</td></tr>
+<tr class="memdesc:a6800c2c822d2786d6d3865eecc0300d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the response ready callback.  <a href="classObdEmulator_1_1ObdService.html#a6800c2c822d2786d6d3865eecc0300d8">More...</a><br /></td></tr>
+<tr class="separator:a6800c2c822d2786d6d3865eecc0300d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d545bd17a7ef858942eca0856cde160"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#a3d545bd17a7ef858942eca0856cde160">TryGetResponse</a> (const std::vector&lt; uint8_t &gt; &amp;pid, std::vector&lt; uint8_t &gt; &amp;response) const =0</td></tr>
 <tr class="memdesc:a3d545bd17a7ef858942eca0856cde160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to get an emulated response based the queried PID.  <a href="classObdEmulator_1_1ObdService.html#a3d545bd17a7ef858942eca0856cde160">More...</a><br /></td></tr>
 <tr class="separator:a3d545bd17a7ef858942eca0856cde160"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8091ce3aa335b9f682982acaa45ca79a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#a8091ce3aa335b9f682982acaa45ca79a">TryGetResponseAsync</a> (const std::vector&lt; uint8_t &gt; &amp;pid, std::function&lt; void(std::vector&lt; uint8_t &gt; &amp;&amp;)&gt; &amp;&amp;callback)=0</td></tr>
-<tr class="memdesc:a8091ce3aa335b9f682982acaa45ca79a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to get an emulated response asynchronously based the queried PID.  <a href="classObdEmulator_1_1ObdService.html#a8091ce3aa335b9f682982acaa45ca79a">More...</a><br /></td></tr>
-<tr class="separator:a8091ce3aa335b9f682982acaa45ca79a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ea38fe4fd7a08120be81eb285cef5fc"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#a5ea38fe4fd7a08120be81eb285cef5fc">TryGetResponseAsync</a> (const std::vector&lt; uint8_t &gt; &amp;pid)=0</td></tr>
+<tr class="memdesc:a5ea38fe4fd7a08120be81eb285cef5fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to get an emulated response asynchronously based the queried PID.  <a href="classObdEmulator_1_1ObdService.html#a5ea38fe4fd7a08120be81eb285cef5fc">More...</a><br /></td></tr>
+<tr class="separator:a5ea38fe4fd7a08120be81eb285cef5fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65637d942b64125a08f8aeca0090b50d"><td class="memItemLeft" align="right" valign="top"><a id="a65637d942b64125a08f8aeca0090b50d" name="a65637d942b64125a08f8aeca0090b50d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetCallback</b> () noexcept</td></tr>
+<tr class="memdesc:a65637d942b64125a08f8aeca0090b50d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the response ready callback. <br /></td></tr>
+<tr class="separator:a65637d942b64125a08f8aeca0090b50d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:af232c0b2b654102b8d9ecbf1de126bf4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#af232c0b2b654102b8d9ecbf1de126bf4">ObdService</a> (uint8_t service) noexcept</td></tr>
 <tr class="memdesc:af232c0b2b654102b8d9ecbf1de126bf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classObdEmulator_1_1ObdService.html#af232c0b2b654102b8d9ecbf1de126bf4">More...</a><br /></td></tr>
 <tr class="separator:af232c0b2b654102b8d9ecbf1de126bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:ae1bc20ac0c63daffb25049b805b045c2"><td class="memItemLeft" align="right" valign="top"><a id="ae1bc20ac0c63daffb25049b805b045c2" name="ae1bc20ac0c63daffb25049b805b045c2"></a>
+<a class="el" href="classObdEmulator_1_1ObdService.html#ab08e27137e1bf121e73dfcffed4e8092">CallbackType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Callback</b></td></tr>
+<tr class="separator:ae1bc20ac0c63daffb25049b805b045c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A class that defines an OBD-II service based on SAE J1979 standard. </p>
@@ -198,6 +220,32 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a6800c2c822d2786d6d3865eecc0300d8" name="a6800c2c822d2786d6d3865eecc0300d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6800c2c822d2786d6d3865eecc0300d8">&#9670;&nbsp;</a></span>SetCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObdEmulator::ObdService::SetCallback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classObdEmulator_1_1ObdService.html#ab08e27137e1bf121e73dfcffed4e8092">CallbackType</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the response ready callback. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback to be invoked when the response is ready </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a3d545bd17a7ef858942eca0856cde160" name="a3d545bd17a7ef858942eca0856cde160"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3d545bd17a7ef858942eca0856cde160">&#9670;&nbsp;</a></span>TryGetResponse()</h2>
 
@@ -245,8 +293,8 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8091ce3aa335b9f682982acaa45ca79a" name="a8091ce3aa335b9f682982acaa45ca79a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8091ce3aa335b9f682982acaa45ca79a">&#9670;&nbsp;</a></span>TryGetResponseAsync()</h2>
+<a id="a5ea38fe4fd7a08120be81eb285cef5fc" name="a5ea38fe4fd7a08120be81eb285cef5fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ea38fe4fd7a08120be81eb285cef5fc">&#9670;&nbsp;</a></span>TryGetResponseAsync()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -258,18 +306,8 @@ Protected Member Functions</h2></td></tr>
           <td class="memname">virtual bool ObdEmulator::ObdService::TryGetResponseAsync </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; uint8_t &gt; &amp;&#160;</td>
-          <td class="paramname"><em>pid</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>pid</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">std::function&lt; void(std::vector&lt; uint8_t &gt; &amp;&amp;)&gt; &amp;&amp;&#160;</td>
-          <td class="paramname"><em>callback</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -282,8 +320,7 @@ Protected Member Functions</h2></td></tr>
 <p>Try to get an emulated response asynchronously based the queried PID. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">pid</td><td>Queried PID </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">callback</td><td>Callback to be invoked when the response is ready </td></tr>
+    <tr><td class="paramname">pid</td><td>Queried PID </td></tr>
   </table>
   </dd>
 </dl>
