@@ -120,6 +120,9 @@ namespace ObdEmulator
         }
         else
         {
+            // Resize the vector to remove possible garbage bytes
+            _readBuffer.resize(_numberOfReadBytes);
+
             if (Callback)
             {
                 std::vector<uint8_t> _response;

@@ -20,7 +20,8 @@ namespace ObdEmulator
         static const size_t cSingalFdIndex{0};
         static const size_t cCommunicationFdIndex{1};
         static const size_t cNumberOfFileDescriptors{2};
-        static const size_t cReadBufferSize{20};
+        /// @note Maximum CAN packet size (15) times by two
+        static const size_t cReadBufferSize{30};
 
         const std::string mSerialPort;
         const speed_t mBaudrate;
