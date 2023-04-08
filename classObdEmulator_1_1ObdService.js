@@ -1,6 +1,7 @@
 var classObdEmulator_1_1ObdService =
 [
     [ "CallbackType", "classObdEmulator_1_1ObdService.html#ab08e27137e1bf121e73dfcffed4e8092", null ],
+    [ "InternalCallbackType", "classObdEmulator_1_1ObdService.html#a5420690bbf1d985f8993aaf7dd70aceb", null ],
     [ "ObdService", "classObdEmulator_1_1ObdService.html#af232c0b2b654102b8d9ecbf1de126bf4", null ],
     [ "GetService", "classObdEmulator_1_1ObdService.html#a9769a7ef56a96b587ee51ca46a26b999", null ],
     [ "ResetCallback", "classObdEmulator_1_1ObdService.html#a65637d942b64125a08f8aeca0090b50d", null ],

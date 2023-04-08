@@ -104,6 +104,7 @@ $(document).ready(function(){initNavTree('classObdEmulator_1_1ObdService.html','
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-types">Protected Types</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classObdEmulator_1_1ObdService-members.html">List of all members</a>  </div>
@@ -142,6 +143,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetCallback</b> () 
 <tr class="memdesc:a65637d942b64125a08f8aeca0090b50d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the response ready callback. <br /></td></tr>
 <tr class="separator:a65637d942b64125a08f8aeca0090b50d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-types" name="pro-types"></a>
+Protected Types</h2></td></tr>
+<tr class="memitem:a5420690bbf1d985f8993aaf7dd70aceb"><td class="memItemLeft" align="right" valign="top"><a id="a5420690bbf1d985f8993aaf7dd70aceb" name="a5420690bbf1d985f8993aaf7dd70aceb"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>InternalCallbackType</b> = std::function&lt; void(const std::vector&lt; uint8_t &gt; &amp;, std::vector&lt; uint8_t &gt; &amp;&amp;)&gt;</td></tr>
+<tr class="memdesc:a5420690bbf1d985f8993aaf7dd70aceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Service specific response ready callback type. <br /></td></tr>
+<tr class="separator:a5420690bbf1d985f8993aaf7dd70aceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:af232c0b2b654102b8d9ecbf1de126bf4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObdEmulator_1_1ObdService.html#af232c0b2b654102b8d9ecbf1de126bf4">ObdService</a> (uint8_t service) noexcept</td></tr>
@@ -150,9 +158,9 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ae1bc20ac0c63daffb25049b805b045c2"><td class="memItemLeft" align="right" valign="top"><a id="ae1bc20ac0c63daffb25049b805b045c2" name="ae1bc20ac0c63daffb25049b805b045c2"></a>
-<a class="el" href="classObdEmulator_1_1ObdService.html#ab08e27137e1bf121e73dfcffed4e8092">CallbackType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Callback</b></td></tr>
-<tr class="separator:ae1bc20ac0c63daffb25049b805b045c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a885091b26f87c5d0dc7ced27b7c6c3e1"><td class="memItemLeft" align="right" valign="top"><a id="a885091b26f87c5d0dc7ced27b7c6c3e1" name="a885091b26f87c5d0dc7ced27b7c6c3e1"></a>
+<a class="el" href="classObdEmulator_1_1ObdService.html#a5420690bbf1d985f8993aaf7dd70aceb">InternalCallbackType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Callback</b></td></tr>
+<tr class="separator:a885091b26f87c5d0dc7ced27b7c6c3e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A class that defines an OBD-II service based on SAE J1979 standard. </p>
