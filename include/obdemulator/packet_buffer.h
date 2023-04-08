@@ -15,7 +15,6 @@ namespace ObdEmulator
         std::mutex mMutex;
         std::queue<std::vector<uint8_t>> mQueue;
         std::atomic_size_t mSize;
-        std::unique_lock<std::mutex> mLock;
 
     public:
         PacketBuffer();

@@ -2,18 +2,18 @@
 
 namespace ObdEmulator
 {
-    PacketBuffer::PacketBuffer() : mSize{0},
-                                   mLock{mMutex, std::defer_lock}
+    PacketBuffer::PacketBuffer() : mSize{0}
     {
     }
 
     bool PacketBuffer::TryEnqueue(std::vector<uint8_t> &&packet)
     {
-        if (mLock.try_lock())
+        std::unique_lock<std::mutex> _lock(mMutex, std::defer_lock);
+        if (_lock.try_lock())
         {
             mQueue.push(std::move(packet));
             ++mSize;
-            mLock.unlock();
+            _lock.unlock();
             return true;
         }
         else
@@ -24,12 +24,13 @@ namespace ObdEmulator
 
     bool PacketBuffer::TryDequeue(std::vector<uint8_t> &packet)
     {
-        if (mLock.try_lock())
+        std::unique_lock<std::mutex> _lock(mMutex, std::defer_lock);
+        if (_lock.try_lock())
         {
             packet = std::move(mQueue.front());
             mQueue.pop();
             --mSize;
-            mLock.unlock();
+            _lock.unlock();
             return true;
         }
         else
@@ -40,12 +41,13 @@ namespace ObdEmulator
 
     bool PacketBuffer::TryClear()
     {
+        std::unique_lock<std::mutex> _lock(mMutex, std::defer_lock);
         std::queue<std::vector<uint8_t>> _emptyQueue;
-        if (mLock.try_lock())
+        if (_lock.try_lock())
         {
             std::swap(mQueue, _emptyQueue);
             mSize = 0;
-            mLock.unlock();
+            _lock.unlock();
             return true;
         }
         else
