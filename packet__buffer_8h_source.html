@@ -120,31 +120,30 @@ $(document).ready(function(){initNavTree('packet__buffer_8h_source.html',''); in
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        std::mutex mMutex;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        std::queue&lt;std::vector&lt;uint8_t&gt;&gt; mQueue;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        std::atomic_size_t mSize;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        std::unique_lock&lt;std::mutex&gt; mLock;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_class" href="classObdEmulator_1_1PacketBuffer.html">PacketBuffer</a>();</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_class" href="classObdEmulator_1_1PacketBuffer.html">~PacketBuffer</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1PacketBuffer.html#a700998de2728e73c82416fcbc2cd98bd">   27</a></span>        <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classObdEmulator_1_1PacketBuffer.html#a700998de2728e73c82416fcbc2cd98bd">Empty</a>() const noexcept</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="keywordflow">return</span> mSize == 0;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        }</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1PacketBuffer.html#ac7ebcdec97aff74757c217bccdb8cb58">   35</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classObdEmulator_1_1PacketBuffer.html#ac7ebcdec97aff74757c217bccdb8cb58">TryEnqueue</a>(std::vector&lt;uint8_t&gt; &amp;&amp;packet);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1PacketBuffer.html#a0f1565733d4dc3eedd9aa4acbbd328c6">   40</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classObdEmulator_1_1PacketBuffer.html#a0f1565733d4dc3eedd9aa4acbbd328c6">TryDequeue</a>(std::vector&lt;uint8_t&gt; &amp;packet);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1PacketBuffer.html#a2ed73be64a7fd05ccde34e59b2eb6d12">   44</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classObdEmulator_1_1PacketBuffer.html#a2ed73be64a7fd05ccde34e59b2eb6d12">TryClear</a>();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    };</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <a class="code hl_class" href="classObdEmulator_1_1PacketBuffer.html">PacketBuffer</a>();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_class" href="classObdEmulator_1_1PacketBuffer.html">~PacketBuffer</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1PacketBuffer.html#a700998de2728e73c82416fcbc2cd98bd">   26</a></span>        <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classObdEmulator_1_1PacketBuffer.html#a700998de2728e73c82416fcbc2cd98bd">Empty</a>() const noexcept</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="keywordflow">return</span> mSize == 0;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1PacketBuffer.html#ac7ebcdec97aff74757c217bccdb8cb58">   34</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classObdEmulator_1_1PacketBuffer.html#ac7ebcdec97aff74757c217bccdb8cb58">TryEnqueue</a>(std::vector&lt;uint8_t&gt; &amp;&amp;packet);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1PacketBuffer.html#a0f1565733d4dc3eedd9aa4acbbd328c6">   39</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classObdEmulator_1_1PacketBuffer.html#a0f1565733d4dc3eedd9aa4acbbd328c6">TryDequeue</a>(std::vector&lt;uint8_t&gt; &amp;packet);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classObdEmulator_1_1PacketBuffer.html#a2ed73be64a7fd05ccde34e59b2eb6d12">   43</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classObdEmulator_1_1PacketBuffer.html#a2ed73be64a7fd05ccde34e59b2eb6d12">TryClear</a>();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    };</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassObdEmulator_1_1PacketBuffer_html"><div class="ttname"><a href="classObdEmulator_1_1PacketBuffer.html">ObdEmulator::PacketBuffer</a></div><div class="ttdoc">Thread-safe queue for buffering packet data bytes.</div><div class="ttdef"><b>Definition:</b> packet_buffer.h:13</div></div>
 <div class="ttc" id="aclassObdEmulator_1_1PacketBuffer_html_a0f1565733d4dc3eedd9aa4acbbd328c6"><div class="ttname"><a href="classObdEmulator_1_1PacketBuffer.html#a0f1565733d4dc3eedd9aa4acbbd328c6">ObdEmulator::PacketBuffer::TryDequeue</a></div><div class="ttdeci">bool TryDequeue(std::vector&lt; uint8_t &gt; &amp;packet)</div><div class="ttdoc">Try to peek a packet from the buffer by removing it.</div></div>
 <div class="ttc" id="aclassObdEmulator_1_1PacketBuffer_html_a2ed73be64a7fd05ccde34e59b2eb6d12"><div class="ttname"><a href="classObdEmulator_1_1PacketBuffer.html#a2ed73be64a7fd05ccde34e59b2eb6d12">ObdEmulator::PacketBuffer::TryClear</a></div><div class="ttdeci">bool TryClear()</div><div class="ttdoc">Try to make the buffer empty.</div></div>
-<div class="ttc" id="aclassObdEmulator_1_1PacketBuffer_html_a700998de2728e73c82416fcbc2cd98bd"><div class="ttname"><a href="classObdEmulator_1_1PacketBuffer.html#a700998de2728e73c82416fcbc2cd98bd">ObdEmulator::PacketBuffer::Empty</a></div><div class="ttdeci">bool Empty() const noexcept</div><div class="ttdoc">Indicate whether the buffer is empty or not.</div><div class="ttdef"><b>Definition:</b> packet_buffer.h:27</div></div>
+<div class="ttc" id="aclassObdEmulator_1_1PacketBuffer_html_a700998de2728e73c82416fcbc2cd98bd"><div class="ttname"><a href="classObdEmulator_1_1PacketBuffer.html#a700998de2728e73c82416fcbc2cd98bd">ObdEmulator::PacketBuffer::Empty</a></div><div class="ttdeci">bool Empty() const noexcept</div><div class="ttdoc">Indicate whether the buffer is empty or not.</div><div class="ttdef"><b>Definition:</b> packet_buffer.h:26</div></div>
 <div class="ttc" id="aclassObdEmulator_1_1PacketBuffer_html_ac7ebcdec97aff74757c217bccdb8cb58"><div class="ttname"><a href="classObdEmulator_1_1PacketBuffer.html#ac7ebcdec97aff74757c217bccdb8cb58">ObdEmulator::PacketBuffer::TryEnqueue</a></div><div class="ttdeci">bool TryEnqueue(std::vector&lt; uint8_t &gt; &amp;&amp;packet)</div><div class="ttdoc">Try to insert a packet to the buffer via moving.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
