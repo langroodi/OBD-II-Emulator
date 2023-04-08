@@ -13,7 +13,12 @@ namespace ObdEmulator
 
     void ObdService::SetCallback(CallbackType &&callback)
     {
-        Callback = std::move(callback);
+        Callback =
+            std::bind(
+                std::move(callback),
+                std::placeholders::_1,
+                std::placeholders::_2,
+                mService);
     }
 
     void ObdService::ResetCallback() noexcept

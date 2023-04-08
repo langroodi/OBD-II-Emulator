@@ -39,7 +39,7 @@ namespace ObdEmulator
             if (_queriedPid == cVehicleSpeedPid)
             {
                 std::vector<uint8_t> _response{cVehicleSpeed};
-                Callback(pid, std::move(_response), GetService());
+                Callback(pid, std::move(_response));
                 
                 return true;
             }

@@ -22,7 +22,10 @@ namespace ObdEmulator
         /// @param service OBD-II service (mode)
         ObdService(uint8_t service) noexcept;
 
-        CallbackType Callback;
+        /// @brief Service specific response ready callback type
+        using InternalCallbackType = std::function<void(const std::vector<uint8_t> &, std::vector<uint8_t> &&)>;
+
+        InternalCallbackType Callback;
 
     public:
         virtual ~ObdService() noexcept;
