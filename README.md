@@ -36,7 +36,8 @@ The current library has two categories of dependency as follows:
 
 ### Hardware dependencies
 - [USB-CAN Analyzer](https://github.com/SeeedDocument/USB-CAN-Analyzer)
-- [CH341SER Linux Driver v1.3](https://github.com/SeeedDocument/USB-CAN-Analyzer/tree/master/res/Driver)
+- [CH341SER Linux Driver](https://github.com/juliagoda/CH341SER)
+> ⚠️ If after loading the driver, the analyzer is got disconnected because of [brltty](https://brltty.app) (which can be seen via launching `sudo dmesg | grep tty` in the termnial), then follow [this solution](https://github.com/juliagoda/CH341SER/issues/18#issue-1050941767).
 
 ### Software dependencies
 - Cpp Standard: 14
